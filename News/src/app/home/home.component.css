@@ -1,0 +1,52 @@
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3rem;
+}
+
+img {
+  object-fit: contain;
+}
+
+.covid-19 article {
+  display: flex;
+  justify-content: center;
+}
+
+.covid-19 article section {
+  border: 2px solid white;
+  margin: 1rem;
+  padding: 1rem;
+  width: 18rem;
+}
+
+.covid-19 h3 {
+  border-bottom: 2px solid white;
+}
+
+.content {
+  max-width: 80%;
+  max-height: 30%;
+}
+
+tr {
+  display: flex;
+  justify-content: space-between;
+}
+
+th {
+  width: 5rem;
+}
+
+
+@media only screen and (max-width: 786px) {
+  img {
+    display: none;
+  }
+
+  .covid-19 article {
+    flex-wrap: wrap;
+  }
+}
