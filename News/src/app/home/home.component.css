@@ -1,52 +1,137 @@
-.main-content {
+/*.main-content {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  padding-top: 3rem;*/
+/*}*/
+
+/*img {*/
+/*  object-fit: contain;*/
+/*}*/
+
+/*.covid-19 article {*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*}*/
+
+/*.covid-19 article section {*/
+/*  border: 2px solid white;*/
+/*  margin: 1rem;*/
+/*  padding: 1rem;*/
+/*  width: 18rem;*/
+/*}*/
+
+/*.covid-19 h3 {*/
+/*  border-bottom: 2px solid white;*/
+/*}*/
+
+/*.content {*/
+/*  max-width: 80%;*/
+/*  max-height: 30%;*/
+/*}*/
+
+/*tr {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*}*/
+
+/*th {*/
+/*  width: 5rem;*/
+/*}*/
+
+
+/*@media only screen and (max-width: 786px) {*/
+/*  img {*/
+/*    display: none;*/
+/*  }*/
+
+/*  .covid-19 article {*/
+/*    flex-wrap: wrap;*/
+/*  }*/
+/*}*/
+
+/* Start Covid-19 */
+.covid-19 {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding-top: 3rem;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+  align-items: flex-start;
 }
 
-img {
-  object-fit: contain;
-}
-
-.covid-19 article {
-  display: flex;
-  justify-content: center;
-}
-
-.covid-19 article section {
+.covid-19 section {
   border: 2px solid white;
-  margin: 1rem;
-  padding: 1rem;
+  width: 18rem;
+  margin: 0 0.25rem;
+}
+
+.covid-19 section h3 {
+  border-bottom: 2px solid white;
+  text-align: center;
+  padding: 0.25rem 0;
+}
+
+th, td {
+  padding: 0.5rem 0;
+}
+
+table th:not(:last-child) {
+  padding-right: 3.75rem;
+}
+
+/* Finish Covid-19*/
+
+/* Start Card */
+h2 {
+  text-align: center;
+  padding-top: 2rem;
+}
+
+h3 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.info-news {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 3rem 1rem;
+}
+
+.card {
+  border: 2px solid white;
+  margin: 2rem;
   width: 18rem;
 }
 
-.covid-19 h3 {
-  border-bottom: 2px solid white;
+.card .card-img-top {
+  object-fit: cover;
+  width: 18rem;
 }
 
-.content {
-  max-width: 80%;
-  max-height: 30%;
+.card .card-body {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1.25rem;
 }
 
-tr {
-  display: flex;
-  justify-content: space-between;
+a {
+  text-decoration: none;
+  border-radius: 2px;
+  background-color: red;
+  padding: 0.35rem 1rem;
+  color: white;
 }
 
-th {
-  width: 5rem;
-}
-
+/* Finish Card */
 
 @media only screen and (max-width: 786px) {
-  img {
+  .covid-19 img {
     display: none;
   }
 
-  .covid-19 article {
-    flex-wrap: wrap;
+  .covid-19 section {
+    margin: 0.25rem;
   }
 }
