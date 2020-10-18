@@ -35,6 +35,7 @@ input:last-child {
 input:last-child:hover {
   background-color: greenyellow;
   transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
   color: #0f0f0f;
 }
 
