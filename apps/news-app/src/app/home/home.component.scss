@@ -1,0 +1,94 @@
+/* Start Covid-19 */
+.covid-19 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+  align-items: flex-start;
+
+  section {
+    border: 2px solid white;
+    margin: 0 0.25rem;
+
+    h3 {
+      border-bottom: 2px solid white;
+      text-align: center;
+      padding: 0.25rem 0;
+    }
+  }
+
+  table {
+    th:not(:last-child) {
+      padding-right: 3.75rem;
+    }
+
+    td {
+      padding: 0 0 0 0.2rem;
+    }
+  }
+}
+
+/* Finish Covid-19*/
+
+/* Title */
+
+h2 {
+  text-align: center;
+  padding-top: 2rem;
+}
+
+h3 {
+  font-size: 24px;
+  margin: 0;
+}
+
+/* Finish Title */
+
+/* Start Card */
+
+.info-news {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 3rem 1rem;
+
+  .card {
+    border: 2px solid white;
+    margin: 2rem;
+    width: 18rem;
+  }
+
+  .card-body {
+    background-color: rgb(26, 25, 24);
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  a {
+    text-decoration: none;
+    border-radius: 2px;
+    background-color: red;
+    padding: 0.35rem 1rem;
+    color: white;
+  }
+}
+
+/* Finish Card */
+
+@media (max-width: 786px) {
+  .covid-19 {
+    img {
+      display: none;
+    }
+
+    section {
+      margin: 0.25rem;
+    }
+  }
+
+  .info-news{
+    .card {
+      margin: 2rem 0;
+    }
+  }
+}
