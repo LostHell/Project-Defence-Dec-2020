@@ -19,6 +19,10 @@ footer {
         border-bottom: 2px solid white;
       }
 
+      th {
+        font-size: 18px;
+      }
+
       th:not(:last-child), td:not(:last-child) {
         padding-right: 3rem;
       }
@@ -72,32 +76,6 @@ footer {
     padding-top: 2rem;
     text-align: center;
   }
-
-  //nav {
-  //  display: flex;
-  //  justify-content: center;
-  //
-  //  ul {
-  //    list-style: none;
-  //    display: flex;
-  //    align-items: center;
-  //
-  //    li {
-  //      padding: 0 1rem;
-  //    }
-  //  }
-  //}
-
-  //a {
-  //  text-decoration: none;
-  //  color: white;
-  //}
-  //
-  //a:hover {
-  //  color: greenyellow;
-  //  border-bottom: 2px solid orange;
-  //  transition: color 0.2s;
-  //}
 }
 
 
@@ -106,8 +84,8 @@ footer {
     section {
       flex-wrap: wrap-reverse;
 
-      .work-time{
-        table{
+      .work-time {
+        table {
           width: 15.5rem;
         }
       }
@@ -123,29 +101,4 @@ footer {
       }
     }
   }
-  //  ul {
-  //    padding: 0;
-  //    flex-wrap: wrap;
-  //    justify-content: center;
-  //
-  //    li {
-  //      margin: 1.5rem;
-  //    }
-  //  }
-  //
-  //  a {
-  //    padding: 0.5rem;
-  //  }
 }
-
-//
-//@media only screen and (max-width: 400px) {
-//  header {
-//    flex-direction: column;
-//    align-items: center;
-//  }
-//
-//  ul {
-//    flex-direction: column;
-//  }
-//}
