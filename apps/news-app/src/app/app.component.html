@@ -1,5 +1,17 @@
-<news-application-header></news-application-header>
-<main>
-  <router-outlet></router-outlet>
-</main>
-<news-application-footer></news-application-footer>
+<app-header
+  (sidenavClose)="sidenav.close()"
+  (sidenavToggle)="sidenav.toggle()"
+  [navigation]="navigation"
+></app-header>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav role="navigation" mode="over">
+    <app-sidenav
+      (sidenavClose)="sidenav.close()"
+      [navigation]="navigation"
+    ></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<app-footer></app-footer>

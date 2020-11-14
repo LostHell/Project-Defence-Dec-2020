@@ -1,0 +1,7 @@
+<app-heading-section></app-heading-section>
+<app-why-us></app-why-us>
+<app-newsletter-subscribe
+  [form]="form"
+  (submitData)="submitNewsletterData($event)"
+  [showSuccessfullySubscribed]="showSuccessfullySubscribed"
+></app-newsletter-subscribe>

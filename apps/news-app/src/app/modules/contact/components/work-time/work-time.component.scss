@@ -1,0 +1,25 @@
+@import '../../../../../styles';
+
+.work-time {
+  //border: 2px solid white;
+  //padding: 1rem 1.5rem;
+  //margin: 1rem;
+
+  tr {
+    border-bottom: 2px solid color('dark-gray');
+  }
+
+  th {
+    font-size: to-rem(16px);
+  }
+
+  th:not(:last-child),
+  td:not(:last-child) {
+    padding-right: 4rem;
+  }
+
+  th,
+  td {
+    padding-top: 0.5rem;
+  }
+}

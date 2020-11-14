@@ -1,10 +1,22 @@
-body {
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
+@import './apps/news-app/src/styles';
 
-main {
+:host {
+  display: flex;
   min-height: 100vh;
-  background-color: rgb(26, 25, 24);
+  flex-direction: column;
+
+  mat-sidenav-container {
+    flex: 1;
+  }
+
+  mat-sidenav-container,
+  mat-sidenav-content,
+  mat-sidenav {
+    height: 100%;
+  }
+
+  mat-sidenav {
+    width: to-rem(250px);
+    background: color('white');
+  }
 }

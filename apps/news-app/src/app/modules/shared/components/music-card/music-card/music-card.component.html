@@ -1,0 +1,10 @@
+<article
+  *ngFor="let artist of data"
+  class="artist d-flex justify-content-center px-5 py-3"
+>
+  <img class="w-75" src="{{ artist.imageUrl }}" alt="" />
+  <section class="artist-content align-self-center mh-25 p-3 p-md-5">
+    <h5>{{ artist.name }}</h5>
+    <p>{{ artist.period }}</p>
+  </section>
+</article>

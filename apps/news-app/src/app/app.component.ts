@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationItem } from './modules/shared/models/NavigationItem';
 
 @Component({
   selector: 'app-root',
@@ -6,23 +7,34 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'news-app';
-
-  // posts: { id: number; name: string; description: string }[] = [
-  //   {
-  //     id: 0,
-  //     name: 'faik',
-  //     description: 'dsa das d as as  ti',
-  //   },
-  //   {
-  //     id: 1,
-  //     name: 'faik',
-  //     description: 'lelka 1111111 ti',
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'FDADSSDAS',
-  //     description: 'lelka 22222 ti',
-  //   },
-  // ];
+  navigation: NavigationItem[] = [
+    {
+      name: 'News',
+      route: '/news',
+    },
+    {
+      name: 'Sports',
+      route: '/sports',
+    },
+    {
+      name: 'Travel',
+      route: '/travel',
+    },
+    {
+      name: 'Music',
+      route: '/music',
+    },
+    {
+      name: 'Contacts',
+      route: '/contacts',
+    },
+    {
+      name: 'Login',
+      route: '/user/login',
+    },
+    {
+      name: 'Register',
+      route: '/user/register',
+    },
+  ];
 }

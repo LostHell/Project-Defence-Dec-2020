@@ -1,0 +1,19 @@
+@import './apps/news-app/src/styles';
+
+.info-travel {
+  flex-direction: column;
+  align-items: center;
+
+  i {
+    font-size: to-rem(30px);
+  }
+
+  @include media-breakpoint-up(md) {
+    flex-direction: row;
+    align-items: baseline;
+
+    i {
+      font-size: to-rem(38px);
+    }
+  }
+}
