@@ -1,0 +1,45 @@
+@import '../../../../../styles';
+
+.football {
+  display: flex;
+  flex-direction: column;
+  color: color('white');
+
+  img {
+    position: relative;
+    height: 45rem;
+    object-fit: cover;
+  }
+}
+
+table {
+  position: absolute;
+  margin-top: 3rem;
+  align-self: center;
+  text-align: center;
+  border: 2px solid white;
+  background-color: color('dark-gray');
+
+  th {
+    border: 2px solid white;
+  }
+
+  tr:not(:last-child) {
+    border-bottom: 2px solid white;
+  }
+
+  th,
+  td {
+    padding: 0.5rem 1rem;
+    font-size: to-rem(14px);
+  }
+}
+
+@include media-breakpoint-up(md) {
+  table {
+    th,
+    td {
+      padding: 0.5rem 3rem;
+    }
+  }
+}

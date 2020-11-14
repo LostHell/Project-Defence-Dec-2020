@@ -1,0 +1,55 @@
+<article class="subscribe">
+  <form
+    class="d-flex justify-content-center align-items-center flex-column m-4 p-4 border"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+  >
+    <h2 class="text-center">Subscribe our Newsletter</h2>
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="name"
+        [disabled]="showSuccessfullySubscribed"
+      />
+      <mat-error *ngIf="form.controls.name.hasError('required')">
+        Please enter your name!
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        formControlName="email"
+        [disabled]="showSuccessfullySubscribed"
+      />
+      <mat-error
+        *ngIf="
+          form.controls.email.hasError('email') ||
+          form.controls.email.hasError('required')
+        "
+      >
+        Please enter a valid email address!
+      </mat-error>
+    </mat-form-field>
+    <!--    <app-reactive-form-input-->
+    <!--      [form]="form"-->
+    <!--      [type]="'text'"-->
+    <!--      [formControlName]="'phone'"-->
+    <!--      [label]="'Phone'"-->
+    <!--      [error]="'Dont have!'"-->
+    <!--      [disabled]="showSuccessfullySubscribed"-->
+    <!--    ></app-reactive-form-input>-->
+    <input
+      class="subs-btn px-5 py-2 text-white border-0"
+      *ngIf="!showSuccessfullySubscribed"
+      type="submit"
+      value="Subscribe"
+    />
+    <div *ngIf="showSuccessfullySubscribed" class="text-center pb-3">
+      Success!
+    </div>
+  </form>
+</article>

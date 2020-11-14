@@ -1,10 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'https://pro.fontawesome.com/releases/v5.10.0/css/all.css';
 
-@import 'https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@700&display=swap';
-
-body {
-  margin: 0;
-  font-family: 'Nanum Gothic', sans-serif;
-  background-color: #0f0f0f;
-  color: white;
-}
+@import '~bootstrap/scss/bootstrap';
+@import 'styles/reset';
+@import 'styles/functions';
+@import 'styles/_typography.scss';
+@import 'styles/_variables.scss';

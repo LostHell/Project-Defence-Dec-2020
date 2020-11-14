@@ -1,0 +1,19 @@
+<div class="football">
+  <img src="./assets/images/FIFA-2018-World-Cup-Featured.jpg" alt="" />
+  <table>
+    <thead>
+      <tr>
+        <th>Host</th>
+        <th>Result</th>
+        <th>Guest</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td>{{ item.host }}</td>
+        <td>{{ item.result }}</td>
+        <td>{{ item.guest }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,22 @@
+@import '../../../styles';
+
+h1,
+.error {
+  font-size: to-rem(18px);
+
+  span {
+    color: color('red');
+    font-size: to-rem(20px);
+  }
+}
+
+@include media-breakpoint-up(md) {
+  h1,
+  .error {
+    font-size: to-rem(25px);
+
+    span {
+      font-size: to-rem(28px);
+    }
+  }
+}

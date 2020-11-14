@@ -1,0 +1,70 @@
+@import './apps/news-app/src/styles';
+
+.subs-btn {
+  background-color: color('button');
+  border: none;
+  outline: none;
+}
+
+//.subscribe {
+//  form {
+//    h2 {
+//      font-size: 24px;
+//    }
+//
+//    input:not(:last-child) {
+//      width: 15.5rem;
+//    }
+//  }
+//}
+//
+//@include media-breakpoint-up(md) {
+//  .subscribe {
+//    margin: 1rem;
+//    padding-bottom: 2rem;
+//
+//    form {
+//      display: flex;
+//      flex-direction: column;
+//      border: 2px solid white;
+//      padding: 1rem 1.5rem;
+//
+//      h2 {
+//        text-align: center;
+//      }
+//
+//      label {
+//        padding: 0.75rem 0 0.5rem 0;
+//        align-self: center;
+//      }
+//
+//      input:not(:last-child) {
+//        width: 22rem;
+//        padding: 0.5rem;
+//        border-radius: 5px;
+//        align-self: center;
+//        border: none;
+//        outline: none;
+//      }
+//
+//      input:last-child {
+//        margin: 1.25rem auto;
+//        padding: 0.75rem;
+//        width: 10rem;
+//        color: white;
+//        font-size: 16px;
+//        background-color: red;
+//        border: none;
+//        outline: none;
+//        border-radius: 5px;
+//      }
+//
+//      input:last-child:hover {
+//        background-color: white;
+//        transition: background-color 0.2s, color 0.2s;
+//        cursor: pointer;
+//        color: #0f0f0f;
+//      }
+//    }
+//  }
+//}

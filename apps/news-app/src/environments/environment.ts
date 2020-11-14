@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  BACKENDLESS_APP_ID: 'BE4FDEFE-054C-C1A1-FF96-D31AB183CF00',
+  BACKENDLESS_API_KEY: '4A996B69-18BA-498E-B3E9-5B5312848365',
 };
 
 /*

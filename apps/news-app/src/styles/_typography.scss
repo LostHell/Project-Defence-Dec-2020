@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+@import '~bootstrap/scss/bootstrap';
+@import '_variables.scss';
+@import 'functions';
+
+html,
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: $font-size;
+}
+
+h1 {
+  font-size: to-rem(30px);
+}
+h2 {
+  font-size: to-rem(28px);
+}
+h3 {
+  font-size: to-rem(26px);
+}
+h4 {
+  font-size: to-rem(24px);
+}
+h5 {
+  font-size: to-rem(22px);
+}
+h6 {
+  font-size: to-rem(20px);
+}
