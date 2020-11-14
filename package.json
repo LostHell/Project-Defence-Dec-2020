@@ -42,7 +42,7 @@
     "@nrwl/angular": "10.3.3",
     "bootstrap": "4.5.3",
     "jquery": "3.5.1",
-    "rxjs": "~6.5.5",
+    "rxjs": "~6.6.3",
     "zone.js": "^0.10.2"
   },
   "devDependencies": {
