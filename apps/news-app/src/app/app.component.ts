@@ -24,10 +24,12 @@ export class AppComponent {
       name: 'Music',
       route: '/music',
     },
-    {
-      name: 'Contacts',
-      route: '/contacts',
-    },
+    // {
+    //   name: 'Contacts',
+    //   route: '/contacts',
+    // },
+  ];
+  navigationNotLoggeInUsers: NavigationItem[] = [
     {
       name: 'Login',
       route: '/user/login',

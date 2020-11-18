@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NewsletterCredentials } from '../../modules/shared/models/NewsletterCredentials';
-import { NEWSLETTER_URL } from '../../modules/shared/constants';
+import { NewsletterCredentials } from '../../../modules/shared/models/NewsletterCredentials';
+import { NEWSLETTER_URL } from '../../../modules/shared/constants';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 

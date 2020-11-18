@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NewsletterService } from '../../../../core/services/newsletter.service';
+import { NewsletterService } from '../../../../core/services/newsletter/newsletter.service';
 import { NewsletterCredentials } from '../../../shared/models/NewsletterCredentials';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -78,8 +78,10 @@ export class HomeComponent {
   }
 
   submitNewsletterData(data: NewsletterCredentials) {
-    this.newsletterService.subscribeToNewsletter(data).subscribe(() => {
-      this.showSuccessfullySubscribed = true;
-    });
+    if (this.form.valid) {
+      this.newsletterService.subscribeToNewsletter(data).subscribe(() => {
+        this.showSuccessfullySubscribed = true;
+      });
+    }
   }
 }

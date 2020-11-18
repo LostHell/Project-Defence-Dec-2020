@@ -11,6 +11,8 @@ export class HeaderComponent {
   @Output() public sidenavClose = new EventEmitter();
 
   @Input() navigation: NavigationItem[] = [];
+  @Input() navigationNotLoggeInUsers: NavigationItem[] = [];
+  isLoggedIn = localStorage.getItem('user-token');
 
   constructor() {}
 

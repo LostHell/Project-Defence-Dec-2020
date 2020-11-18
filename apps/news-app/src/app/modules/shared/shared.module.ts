@@ -9,8 +9,9 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 import { SidenavComponent } from './components/layout/sidenav/sidenav.component';
 
 import { ReactiveInputComponent } from './components/forms/reactive-input/reactive-input.component';
-import { CardComponent } from './components/card/card/card.component';
-import { MusicCardComponent } from './components/music-card/music-card/music-card.component';
+import { NewsCardComponent } from './components/cards/news-card-render/news-card.component';
+import { MusicCardComponent } from '../music/components/music-card-render/music-card.component';
+import { ButtonComponent } from './components/button/button/button.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, MaterialModule, ReactiveFormsModule],
@@ -19,16 +20,18 @@ import { MusicCardComponent } from './components/music-card/music-card/music-car
     FooterComponent,
     SidenavComponent,
     ReactiveInputComponent,
-    CardComponent,
+    NewsCardComponent,
     MusicCardComponent,
+    ButtonComponent,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     SidenavComponent,
     ReactiveInputComponent,
-    CardComponent,
+    NewsCardComponent,
     MusicCardComponent,
+    ButtonComponent,
   ],
 })
 export class SharedModule {}

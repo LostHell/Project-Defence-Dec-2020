@@ -6,5 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./music-card.component.scss'],
 })
 export class MusicCardComponent {
-  @Input() data = [];
+  @Input() imageUrl: string;
+  @Input() name: string;
+  @Input() period: string;
 }

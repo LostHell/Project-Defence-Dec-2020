@@ -11,11 +11,11 @@ import { NewsComponent } from './modules/news/containers/news.component';
 import { SportComponent } from './modules/sport/containers/sport.component';
 import { TravelComponent } from './modules/travel/containers/travel.component';
 import { MusicComponent } from './modules/music/containers/music.component';
-import { ContactComponent } from './modules/contact/containers/contact.component';
+// import { ContactComponent } from './modules/contact/containers/contact.component';
 import { ErrorComponent } from './modules/error/error.component';
 import { FootballResultTableComponent } from './modules/sport/components/football-result-table/football-result-table.component';
 import { WorkTimeComponent } from './modules/contact/components/work-time/work-time.component';
-import { ContantInfoComponent } from './modules/contact/components/contant-info/contant-info.component';
+import { ContactInfoComponent } from './modules/contact/components/contact-info/contact-info.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +23,12 @@ import { ContantInfoComponent } from './modules/contact/components/contant-info/
     NewsComponent,
     SportComponent,
     TravelComponent,
-    ContactComponent,
+    // ContactComponent,
     MusicComponent,
     ErrorComponent,
     FootballResultTableComponent,
     WorkTimeComponent,
-    ContantInfoComponent,
+    ContactInfoComponent,
   ],
   imports: [
     BrowserModule,

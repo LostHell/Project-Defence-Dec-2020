@@ -1,10 +1,13 @@
 <div class="container football-page">
-  <div class="football-result">
-    <app-football-result-table
-      [data]="footballResults"
-    ></app-football-result-table>
-  </div>
-  <div class="football-news">
-    <app-card [data]="allFootballNews"></app-card>
+  <app-football-result-table
+    [data]="footballResults"
+  ></app-football-result-table>
+  <div *ngFor="let footballNews of allFootballNews">
+    <app-card
+      [imageUrl]="footballNews.imageUrl"
+      [title]="footballNews.title"
+      [content]="footballNews.content"
+      [buttonHide]="true"
+    ></app-card>
   </div>
 </div>

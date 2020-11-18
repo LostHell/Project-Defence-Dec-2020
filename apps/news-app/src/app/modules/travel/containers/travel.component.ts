@@ -58,4 +58,6 @@ export class TravelComponent {
         'покрива на Райхстага.',
     },
   ];
+
+  constructor() {}
 }

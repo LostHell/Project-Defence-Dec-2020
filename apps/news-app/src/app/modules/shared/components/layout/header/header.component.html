@@ -20,8 +20,23 @@
       <mat-icon>menu</mat-icon>
     </button>
     <nav class="d-none d-md-flex">
-      <ul class="list-unstyled d-flex align-items-center m-0 p-0 text-center">
+      <ul
+        *ngIf="isLoggedIn"
+        class="list-unstyled d-flex align-items-center m-0 p-0 text-center"
+      >
         <li *ngFor="let item of navigation">
+          <a
+            class="p-2 d-block text-decoration-none"
+            [routerLink]="item.route"
+            >{{ item.name }}</a
+          >
+        </li>
+      </ul>
+      <ul
+        *ngIf="!isLoggedIn"
+        class="list-unstyled d-flex align-items-center m-0 p-0 text-center"
+      >
+        <li *ngFor="let item of navigationNotLoggeInUsers">
           <a
             class="p-2 d-block text-decoration-none"
             [routerLink]="item.route"

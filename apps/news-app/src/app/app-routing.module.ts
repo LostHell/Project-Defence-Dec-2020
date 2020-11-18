@@ -4,7 +4,7 @@ import { NewsComponent } from './modules/news/containers/news.component';
 import { SportComponent } from './modules/sport/containers/sport.component';
 import { TravelComponent } from './modules/travel/containers/travel.component';
 import { MusicComponent } from './modules/music/containers/music.component';
-import { ContactComponent } from './modules/contact/containers/contact.component';
+// import { ContactComponent } from './modules/contact/containers/contact.component';
 import { ErrorComponent } from './modules/error/error.component';
 
 const routes: Routes = [
@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'sports', component: SportComponent },
   { path: 'travel', component: TravelComponent },
   { path: 'music', component: MusicComponent },
-  { path: 'contacts', component: ContactComponent },
+  // { path: 'contacts', component: ContactComponent },
   {
     path: 'user',
     loadChildren: () =>

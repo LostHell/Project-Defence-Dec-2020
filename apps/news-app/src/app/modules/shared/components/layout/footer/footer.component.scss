@@ -1,0 +1,31 @@
+@import '../../../../../../styles';
+
+.icon {
+  width: to-rem(42px);
+  height: to-rem(42px);
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    rgba(26, 32, 43, 1) 0%,
+    rgba(124, 38, 131, 1) 50%,
+    rgba(223, 0, 255, 1) 100%
+  );
+}
+
+i {
+  font-size: to-rem(18px);
+  color: color('white');
+}
+
+p,
+a {
+  margin: 0;
+  padding-left: to-rem(14px);
+  font-size: to-rem(16px);
+  font-weight: bold;
+  color: color('white');
+}
+
+a:hover {
+  color: color('white');
+}

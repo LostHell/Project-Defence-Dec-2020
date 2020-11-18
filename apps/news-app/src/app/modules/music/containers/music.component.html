@@ -1,4 +1,10 @@
 <div class="container music">
   <h2 class="py-5 text-center">Music Artists</h2>
-  <app-music-card [data]="musicArtistsData"></app-music-card>
+  <div *ngFor="let artist of musicArtistsData">
+    <app-music-card
+      [imageUrl]="artist.imageUrl"
+      [name]="artist.name"
+      [period]="artist.period"
+    ></app-music-card>
+  </div>
 </div>
