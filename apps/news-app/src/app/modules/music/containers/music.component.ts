@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CheckUserStateService } from '../../../core/services/auth/check-user-state/check-user-state.service';
 
 @Component({
   selector: 'app-music',
@@ -65,5 +66,7 @@ export class MusicComponent {
     },
   ];
 
-  constructor() {}
+  isLoggedIn: boolean = this.state.getState();
+
+  constructor(private state: CheckUserStateService) {}
 }

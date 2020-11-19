@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="isLoggedIn" class="container">
   <h2 class="text-center text-uppercase py-5">
     Top destinations with historical value in Europe
   </h2>
@@ -11,3 +11,4 @@
     ></app-card>
   </div>
 </div>
+<app-not-authorized *ngIf="!isLoggedIn"></app-not-authorized>

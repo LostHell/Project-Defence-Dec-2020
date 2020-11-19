@@ -1,0 +1,15 @@
+@import '../../../../../styles.scss';
+
+div.container {
+  height: 70vh;
+}
+
+.auth-message {
+  position: absolute;
+  top: to-rem(200px);
+  left: to-rem(20px);
+  right: to-rem(20px);
+  text-align: center;
+  font-size: to-rem(16px);
+  color: color('red');
+}

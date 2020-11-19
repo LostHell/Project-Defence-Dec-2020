@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CheckUserStateService } from '../../../core/services/auth/check-user-state/check-user-state.service';
 
 @Component({
   selector: 'app-sport',
@@ -76,5 +77,7 @@ export class SportComponent {
     },
   ];
 
-  constructor() {}
+  isLoggedIn: boolean = this.state.getState();
+
+  constructor(private state: CheckUserStateService) {}
 }

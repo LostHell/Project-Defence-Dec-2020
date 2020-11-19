@@ -1,4 +1,4 @@
-<div class="container football-page">
+<div *ngIf="isLoggedIn" class="container football-page">
   <app-football-result-table
     [data]="footballResults"
   ></app-football-result-table>
@@ -11,3 +11,4 @@
     ></app-card>
   </div>
 </div>
+<app-not-authorized *ngIf="!isLoggedIn"></app-not-authorized>

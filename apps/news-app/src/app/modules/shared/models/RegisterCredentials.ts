@@ -1,5 +1,5 @@
 export interface RegisterCredentials {
-  fullName: string;
+  name: string;
   email: string;
   password: string;
 }

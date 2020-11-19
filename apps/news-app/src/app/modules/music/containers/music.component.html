@@ -1,4 +1,4 @@
-<div class="container music">
+<div *ngIf="isLoggedIn" class="container music">
   <h2 class="py-5 text-center">Music Artists</h2>
   <div *ngFor="let artist of musicArtistsData">
     <app-music-card
@@ -8,3 +8,4 @@
     ></app-music-card>
   </div>
 </div>
+<app-not-authorized *ngIf="!isLoggedIn"></app-not-authorized>

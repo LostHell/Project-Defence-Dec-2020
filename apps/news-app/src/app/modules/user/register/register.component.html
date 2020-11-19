@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-center">
+<div *ngIf="!isLoggedIn" class="container d-flex justify-content-center">
   <form
     [formGroup]="form"
     (ngSubmit)="submitRegisterData()"
@@ -6,7 +6,7 @@
   >
     <app-reactive-form-input
       [form]="form"
-      name="fullName"
+      name="name"
       label="Full name"
       type="text"
       error="Please enter your full name!"
@@ -30,7 +30,7 @@
       name="repeatPassword"
       label="Repeat Password"
       type="password"
-      error="Please enter your repeat password!"
+      error="Repeat password mismatch!"
     ></app-reactive-form-input>
     <app-button label="Register"></app-button>
   </form>

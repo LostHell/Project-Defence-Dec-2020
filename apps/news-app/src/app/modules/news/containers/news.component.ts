@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CheckUserStateService } from '../../../core/services/auth/check-user-state/check-user-state.service';
 
 @Component({
   selector: 'app-news',
@@ -65,7 +66,7 @@ export class NewsComponent {
     },
   ];
 
-  isLoggedIn = localStorage.getItem('user-token');
+  isLoggedIn: boolean = this.state.getState();
 
-  constructor() {}
+  constructor(private state: CheckUserStateService) {}
 }

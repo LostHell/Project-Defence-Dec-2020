@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { NavigationItem } from '../../../models/NavigationItem';
+import { CheckUserStateService } from '../../../../../core/services/auth/check-user-state/check-user-state.service';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +12,10 @@ export class HeaderComponent {
   @Output() public sidenavClose = new EventEmitter();
 
   @Input() navigation: NavigationItem[] = [];
-  @Input() navigationNotLoggeInUsers: NavigationItem[] = [];
-  isLoggedIn = localStorage.getItem('user-token');
 
-  constructor() {}
+  isLoggedIn: boolean = this.state.getState();
+
+  constructor(private state: CheckUserStateService) {}
 
   onToggleSidenav() {
     this.sidenavToggle.emit();
@@ -22,5 +23,9 @@ export class HeaderComponent {
 
   onCloseSidenav() {
     this.sidenavClose.emit();
+  }
+
+  logout() {
+    this.state.removeState();
   }
 }

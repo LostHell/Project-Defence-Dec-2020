@@ -12,6 +12,7 @@ import { ReactiveInputComponent } from './components/forms/reactive-input/reacti
 import { NewsCardComponent } from './components/cards/news-card-render/news-card.component';
 import { MusicCardComponent } from '../music/components/music-card-render/music-card.component';
 import { ButtonComponent } from './components/button/button/button.component';
+import { NotAuthorizedComponent } from './components/not-authorized/not-authorized.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, MaterialModule, ReactiveFormsModule],
@@ -23,6 +24,7 @@ import { ButtonComponent } from './components/button/button/button.component';
     NewsCardComponent,
     MusicCardComponent,
     ButtonComponent,
+    NotAuthorizedComponent,
   ],
   exports: [
     HeaderComponent,
@@ -32,6 +34,7 @@ import { ButtonComponent } from './components/button/button/button.component';
     NewsCardComponent,
     MusicCardComponent,
     ButtonComponent,
+    NotAuthorizedComponent,
   ],
 })
 export class SharedModule {}

@@ -7,36 +7,51 @@ import { NavigationItem } from './modules/shared/models/NavigationItem';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  navigation: NavigationItem[] = [
-    {
-      name: 'News',
-      route: '/news',
-    },
-    {
-      name: 'Sports',
-      route: '/sports',
-    },
-    {
-      name: 'Travel',
-      route: '/travel',
-    },
-    {
-      name: 'Music',
-      route: '/music',
-    },
-    // {
-    //   name: 'Contacts',
-    //   route: '/contacts',
-    // },
-  ];
-  navigationNotLoggeInUsers: NavigationItem[] = [
-    {
-      name: 'Login',
-      route: '/user/login',
-    },
-    {
-      name: 'Register',
-      route: '/user/register',
-    },
-  ];
+  navigation: NavigationItem[] = [];
+
+  ngOnInit() {
+    const result = localStorage.getItem('isActive');
+    const userToken = localStorage.getItem('user-token');
+    if (result === 'false' || userToken === null) {
+      this.navigation = [
+        {
+          name: 'Login',
+          isActive: false,
+          route: '/user/login',
+        },
+        {
+          name: 'Register',
+          isActive: false,
+          route: '/user/register',
+        },
+      ];
+    } else {
+      this.navigation = [
+        {
+          name: 'News',
+          isActive: true,
+          route: '/news',
+        },
+        {
+          name: 'Sports',
+          isActive: true,
+          route: '/sports',
+        },
+        {
+          name: 'Travel',
+          isActive: true,
+          route: '/travel',
+        },
+        {
+          name: 'Music',
+          isActive: true,
+          route: '/music',
+        },
+        // {
+        //   name: 'Contacts',
+        //   route: '/contacts',
+        // },
+      ];
+    }
+  }
 }
