@@ -1,0 +1,10 @@
+<div *ngIf="isLoggedIn">
+  <div *ngIf="item" class="container mb-5">
+    <img class="card-img-top" [src]="item.imageUrl" alt="Card image cap" />
+    <div class="card-body">
+      <h3 class="card-title">{{ item.title }}</h3>
+      <p class="card-text">{{ item.content }}</p>
+    </div>
+  </div>
+</div>
+<app-not-authorized *ngIf="!isLoggedIn"></app-not-authorized>

@@ -69,4 +69,6 @@ export class MusicComponent {
   isLoggedIn: boolean = this.state.getState();
 
   constructor(private state: CheckUserStateService) {}
+
+  // TO DO UNSUBSCRIBE
 }

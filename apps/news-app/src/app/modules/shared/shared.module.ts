@@ -13,6 +13,7 @@ import { NewsCardComponent } from './components/cards/news-card-render/news-card
 import { MusicCardComponent } from '../music/components/music-card-render/music-card.component';
 import { ButtonComponent } from './components/button/button/button.component';
 import { NotAuthorizedComponent } from './components/not-authorized/not-authorized.component';
+import { DetailsComponent } from './components/details/details.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, MaterialModule, ReactiveFormsModule],
@@ -25,6 +26,7 @@ import { NotAuthorizedComponent } from './components/not-authorized/not-authoriz
     MusicCardComponent,
     ButtonComponent,
     NotAuthorizedComponent,
+    DetailsComponent,
   ],
   exports: [
     HeaderComponent,

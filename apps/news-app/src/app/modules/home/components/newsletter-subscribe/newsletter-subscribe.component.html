@@ -17,10 +17,7 @@
       label="Email"
       error="Please enter a valid email address!"
     ></app-reactive-form-input>
-    <app-button
-      *ngIf="!showSuccessfullySubscribed"
-      label="Subscribe"
-    ></app-button>
+    <app-button *ngIf="!showSuccessfullySubscribed">Subscribe</app-button>
     <div *ngIf="showSuccessfullySubscribed" class="text-center pb-3">
       Success!
     </div>

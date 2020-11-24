@@ -12,6 +12,9 @@ export class RegisterService {
   constructor(private http: HttpClient) {}
 
   userRegister(data: RegisterCredentials): Observable<RegisterCredentials> {
+    if (data.role === undefined) {
+      data.role = 'user';
+    }
     return this.http.post<RegisterCredentials>(REGISTER_URL, data).pipe(
       catchError((err) => {
         return throwError(err);

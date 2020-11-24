@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NewsletterCredentials } from '../../../modules/shared/models/NewsletterCredentials';
 import { NEWSLETTER_URL } from '../../../modules/shared/constants';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -16,6 +16,6 @@ export class NewsletterService {
   ): Observable<NewsletterCredentials> {
     return this.http
       .post<NewsletterCredentials>(NEWSLETTER_URL, data)
-      .pipe(catchError((error: any) => Observable.throw(error.json())));
+      .pipe(catchError((error) => of(error.json)));
   }
 }

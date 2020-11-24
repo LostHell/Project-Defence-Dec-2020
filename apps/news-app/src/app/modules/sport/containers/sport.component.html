@@ -1,14 +1,12 @@
 <div *ngIf="isLoggedIn" class="container football-page">
-  <app-football-result-table
-    [data]="footballResults"
-  ></app-football-result-table>
-  <div *ngFor="let footballNews of allFootballNews">
-    <app-card
-      [imageUrl]="footballNews.imageUrl"
-      [title]="footballNews.title"
-      [content]="footballNews.content"
+  <app-football-result-table [data]="football"></app-football-result-table>
+  <div *ngFor="let item of news">
+    <app-news-card-reader
+      *ngIf="item.category === 'sport'"
+      class="d-block my-5"
+      [item]="item"
       [buttonHide]="true"
-    ></app-card>
+    ></app-news-card-reader>
   </div>
 </div>
 <app-not-authorized *ngIf="!isLoggedIn"></app-not-authorized>

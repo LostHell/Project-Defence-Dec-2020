@@ -1,12 +1,12 @@
 <div *ngIf="isLoggedIn" class="container news-page">
   <h2 class="text-uppercase py-3">Un<span>censored</span> NewsApp</h2>
-  <div *ngFor="let news of allNews">
-    <app-card
-      [imageUrl]="news.imageUrl"
-      [title]="news.title"
-      [content]="news.content"
+  <ng-container *ngFor="let item of news">
+    <app-news-card-reader
+      *ngIf="item.category === 'news'"
+      class="d-block my-5"
+      [item]="item"
       buttonHide="true"
-    ></app-card>
-  </div>
+    ></app-news-card-reader>
+  </ng-container>
 </div>
 <app-not-authorized *ngIf="!isLoggedIn"></app-not-authorized>

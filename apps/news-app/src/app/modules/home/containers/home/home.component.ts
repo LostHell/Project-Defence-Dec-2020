@@ -2,69 +2,21 @@ import { Component } from '@angular/core';
 import { NewsletterService } from '../../../../core/services/newsletter/newsletter.service';
 import { NewsletterCredentials } from '../../../shared/models/NewsletterCredentials';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AutoUnsubscribe } from '../../../../core/classes/AutoUnsubscribe';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
-  public news = [
-    {
-      id: 1,
-      imageUrl:
-        'https://estaticos.elperiodico.com/resources/jpg/7/3/primer-ministro-bulgaro-boiko-borisov-1580313573237.jpg',
-      title: 'Bat Boikoo i neshto si',
-      conten:
-        'Свалят пътниците, ако не са с предпазни средства в автобусите в Пловдив,' +
-        'Свалят пътниците, ако не са с предпазни средства в автобусите в Пловдив',
-    },
-    {
-      id: 2,
-      imageUrl:
-        'https://images-na.ssl-images-amazon.com/images/I/81kEeV81nSL._AC_SL1500_.jpg',
-      title: 'Suzuki Motorcycle',
-      conten: 'Blq blq blq blq blq blq blq blq blq blq blq blq',
-    },
-    {
-      id: 3,
-      imageUrl:
-        'https://images-na.ssl-images-amazon.com/images/I/81kEeV81nSL._AC_SL1500_.jpg',
-      title: 'Suzuki Motorcycle',
-      conten: 'Blq blq blq blq blq blq blq blq blq blq blq blq',
-    },
-    {
-      id: 4,
-      imageUrl:
-        'https://images-na.ssl-images-amazon.com/images/I/81kEeV81nSL._AC_SL1500_.jpg',
-      title: 'Suzuki Motorcycle',
-      conten: 'Blq blq blq blq blq blq blq blq blq blq blq blq',
-    },
-    {
-      id: 5,
-      imageUrl:
-        'https://estaticos.elperiodico.com/resources/jpg/7/3/primer-ministro-bulgaro-boiko-borisov-1580313573237.jpg',
-      title: 'Bat Boikoo i neshto si',
-      conten:
-        'Свалят пътниците, ако не са с предпазни средства в автобусите в Пловдив,' +
-        'Свалят пътниците, ако не са с предпазни средства в автобусите в Пловдив',
-    },
-    {
-      id: 6,
-      imageUrl:
-        'https://estaticos.elperiodico.com/resources/jpg/7/3/primer-ministro-bulgaro-boiko-borisov-1580313573237.jpg',
-      title: 'Bat Boikoo i neshto si',
-      conten:
-        'Свалят пътниците, ако не са с предпазни средства в автобусите в Пловдив,' +
-        'Свалят пътниците, ако не са с предпазни средства в автобусите в Пловдив',
-    },
-  ];
-
+export class HomeComponent extends AutoUnsubscribe {
   form: FormGroup;
 
   showSuccessfullySubscribed = false;
 
-  constructor(private newsletterService: NewsletterService) {}
+  constructor(private newsletterService: NewsletterService) {
+    super();
+  }
 
   ngOnInit() {
     this.createForm();
@@ -79,9 +31,11 @@ export class HomeComponent {
 
   submitNewsletterData(data: NewsletterCredentials) {
     if (this.form.valid) {
-      this.newsletterService.subscribeToNewsletter(data).subscribe(() => {
-        this.showSuccessfullySubscribed = true;
-      });
+      this.autoUnsubscribe(
+        this.newsletterService.subscribeToNewsletter(data).subscribe(() => {
+          this.showSuccessfullySubscribed = true;
+        })
+      );
     }
   }
 }

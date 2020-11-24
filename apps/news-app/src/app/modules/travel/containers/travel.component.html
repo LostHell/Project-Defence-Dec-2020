@@ -2,13 +2,12 @@
   <h2 class="text-center text-uppercase py-5">
     Top destinations with historical value in Europe
   </h2>
-  <div *ngFor="let destination of destinationsData">
-    <app-card
-      [imageUrl]="destination.imageUrl"
-      [title]="destination.title"
-      [content]="destination.content"
+  <div *ngFor="let item of destinations">
+    <app-news-card-reader
+      class="d-block my-5"
+      [item]="item"
       [buttonHide]="false"
-    ></app-card>
+    ></app-news-card-reader>
   </div>
 </div>
 <app-not-authorized *ngIf="!isLoggedIn"></app-not-authorized>

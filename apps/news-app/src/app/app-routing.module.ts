@@ -6,6 +6,7 @@ import { TravelComponent } from './modules/travel/containers/travel.component';
 import { MusicComponent } from './modules/music/containers/music.component';
 // import { ContactComponent } from './modules/contact/containers/contact.component';
 import { ErrorComponent } from './modules/error/error.component';
+import { DetailsComponent } from './modules/shared/components/details/details.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/user/user.module').then((m) => m.UserModule),
   },
+  { path: 'details/:id', component: DetailsComponent },
   { path: '**', component: ErrorComponent },
 ];
 

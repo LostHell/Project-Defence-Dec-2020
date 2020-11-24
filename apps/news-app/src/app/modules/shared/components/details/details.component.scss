@@ -1,0 +1,10 @@
+@import '../../../../../styles';
+
+.card-body {
+  background-color: color(dark-gray);
+  color: color('white');
+}
+
+.card-title {
+  font-size: to-rem(16px);
+}
