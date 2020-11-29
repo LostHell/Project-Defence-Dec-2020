@@ -47,6 +47,11 @@ export class AppComponent {
           isActive: true,
           route: '/music',
         },
+        {
+          name: 'Account',
+          isActive: true,
+          route: '/user/account',
+        },
         // {
         //   name: 'Contacts',
         //   route: '/contacts',

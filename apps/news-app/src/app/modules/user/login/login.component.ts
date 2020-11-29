@@ -44,6 +44,7 @@ export class LoginComponent extends AutoUnsubscribe {
         this.loginService.userLogin(this.form.value).subscribe((res) => {
           if (res['user-token']) {
             this.state.setState('user-token', res['user-token']);
+            localStorage.setItem('id', res['objectId']);
             this.router.navigateByUrl('/');
           }
         })

@@ -5,9 +5,17 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AccountComponent } from './account/account.component';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent],
-  imports: [CommonModule, UserRoutingModule, SharedModule, ReactiveFormsModule],
+  declarations: [LoginComponent, RegisterComponent, AccountComponent],
+  imports: [
+    CommonModule,
+    UserRoutingModule,
+    SharedModule,
+    ReactiveFormsModule,
+    MaterialModule,
+  ],
 })
 export class UserModule {}

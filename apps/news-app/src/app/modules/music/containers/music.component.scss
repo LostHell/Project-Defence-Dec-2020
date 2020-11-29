@@ -1,5 +1,10 @@
 @import '../../../../styles';
 
+.music {
+  padding-bottom: to-rem(70px);
+  min-height: 80vh;
+}
+
 h2 {
   font-size: to-rem(18px);
 }

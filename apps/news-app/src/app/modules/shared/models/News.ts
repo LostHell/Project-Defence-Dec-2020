@@ -5,4 +5,5 @@ export interface News {
   imageUrl: string;
   content: string;
   category: string;
+  created: string;
 }

@@ -24,6 +24,7 @@ export class CheckUserStateService {
   removeState() {
     localStorage.removeItem('isActive');
     localStorage.removeItem('user-token');
+    localStorage.removeItem('id');
     this.refreshState();
   }
 

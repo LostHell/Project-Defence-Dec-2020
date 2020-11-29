@@ -1,0 +1,38 @@
+<div *ngIf="isLoggedIn" class="account">
+  <div *ngIf="isAdmin" class="container text-center py-5">
+    <app-button (click)="activateAddNews()">Add news</app-button>
+    <div *ngIf="isActiveNews">
+      <h4 class="text-uppercase my-5">
+        Create your new Un<span>censored</span> news
+      </h4>
+      <form [formGroup]="form" (ngSubmit)="data()" class="d-flex flex-column">
+        <app-base-input
+          [form]="form"
+          label="Title"
+          name="title"
+        ></app-base-input>
+        <app-base-input
+          [form]="form"
+          label="Image URL"
+          name="imageUrl"
+        ></app-base-input>
+        <app-base-input-textarea
+          [form]="form"
+          label="Content"
+          name="content"
+        ></app-base-input-textarea>
+        <app-dropdown-menu
+          [form]="form"
+          label="Select your type"
+          name="category"
+        ></app-dropdown-menu>
+        <app-button *ngIf="isActive">Create!</app-button>
+        <div *ngIf="!isActive">Success!</div>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="!isAdmin">
+    Hello
+  </div>
+</div>
+<app-not-authorized *ngIf="!isLoggedIn"></app-not-authorized>

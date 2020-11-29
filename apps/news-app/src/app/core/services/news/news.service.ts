@@ -29,4 +29,10 @@ export class NewsService {
       .get<FootballResult[]>(FOOTBALL)
       .pipe(catchError((error) => of(error.json)));
   }
+
+  createNews(item: News): Observable<News> {
+    return this.http
+      .post<News>(NEWS, item)
+      .pipe(catchError((error) => of(error.json)));
+  }
 }

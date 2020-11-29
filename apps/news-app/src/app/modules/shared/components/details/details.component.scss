@@ -1,5 +1,9 @@
 @import '../../../../../styles';
 
+.details {
+  min-height: 80vh;
+}
+
 .card-body {
   background-color: color(dark-gray);
   color: color('white');

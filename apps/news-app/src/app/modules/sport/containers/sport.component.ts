@@ -27,6 +27,11 @@ export class SportComponent extends AutoUnsubscribe implements OnInit {
   ngOnInit() {
     this.autoUnsubscribe(
       this.newsService.getNews().subscribe((data) => {
+        data.sort((a, b) => {
+          if (a.created < b.created) {
+            return 1;
+          }
+        });
         for (const item of data) {
           if (item.title.length > 60) {
             item.title = item.title.slice(0, 60).concat('...');
@@ -41,12 +46,12 @@ export class SportComponent extends AutoUnsubscribe implements OnInit {
     );
     this.autoUnsubscribe(
       this.newsService.getFootballResult().subscribe((data) => {
+        data.sort((a, b) => {
+          if (a.created < b.created) {
+            return 1;
+          }
+        });
         if (data.length > 5) {
-          data.sort((a, b) => {
-            if (a.created < b.created) {
-              return 1;
-            }
-          });
           for (let i = 0; i < 5; i++) {
             this.football.push(data[i]);
           }

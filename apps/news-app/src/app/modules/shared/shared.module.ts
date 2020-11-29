@@ -14,6 +14,9 @@ import { MusicCardComponent } from '../music/components/music-card-render/music-
 import { ButtonComponent } from './components/button/button/button.component';
 import { NotAuthorizedComponent } from './components/not-authorized/not-authorized.component';
 import { DetailsComponent } from './components/details/details.component';
+import { DropdownMenuComponent } from './components/dropdown-menu/dropdown-menu.component';
+import { BaseInputComponent } from './components/forms/base-input/base-input.component';
+import { BaseInputTextareaComponent } from './components/forms/base-input-textarea/base-input-textarea.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, MaterialModule, ReactiveFormsModule],
@@ -27,6 +30,9 @@ import { DetailsComponent } from './components/details/details.component';
     ButtonComponent,
     NotAuthorizedComponent,
     DetailsComponent,
+    DropdownMenuComponent,
+    BaseInputComponent,
+    BaseInputTextareaComponent,
   ],
   exports: [
     HeaderComponent,
@@ -37,6 +43,9 @@ import { DetailsComponent } from './components/details/details.component';
     MusicCardComponent,
     ButtonComponent,
     NotAuthorizedComponent,
+    DropdownMenuComponent,
+    BaseInputComponent,
+    BaseInputTextareaComponent,
   ],
 })
 export class SharedModule {}

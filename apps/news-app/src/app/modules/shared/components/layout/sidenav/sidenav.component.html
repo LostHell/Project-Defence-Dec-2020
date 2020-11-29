@@ -8,13 +8,12 @@
   >
     <span class="nav-caption">{{ item.name }}</span>
   </a>
-  <li *ngIf="isLoggedIn">
-    <a
-      mat-list-item
-      class="d-block text-decoration-none"
-      routerLink="/"
-      (click)="logout()"
-      >Logout</a
-    >
-  </li>
+  <a
+    *ngIf="isLoggedIn"
+    mat-list-item
+    class="d-block text-decoration-none"
+    routerLink="/"
+    (click)="logout()"
+    >Logout</a
+  >
 </mat-nav-list>

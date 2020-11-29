@@ -24,6 +24,11 @@ export class NewsComponent extends AutoUnsubscribe implements OnInit {
   ngOnInit() {
     this.autoUnsubscribe(
       this.newsService.getNews().subscribe((data) => {
+        data.sort((a, b) => {
+          if (a.created < b.created) {
+            return 1;
+          }
+        });
         for (const item of data) {
           if (item.title.length > 60) {
             item.title = item.title.slice(0, 60).concat('...');

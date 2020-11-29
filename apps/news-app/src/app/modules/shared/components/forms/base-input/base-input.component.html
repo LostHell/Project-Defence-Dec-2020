@@ -1,0 +1,4 @@
+<mat-form-field [formGroup]="form" class="base-input">
+  <mat-label *ngIf="label">{{ label }}</mat-label>
+  <input matInput [formControlName]="name" placeholder="Ex. news title ..." />
+</mat-form-field>

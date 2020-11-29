@@ -1,5 +1,10 @@
 @import '../../../../styles';
 
+.travel {
+  padding-bottom: to-rem(70px);
+  min-height: 80vh;
+}
+
 h2 {
   font-size: to-rem(16px);
 }

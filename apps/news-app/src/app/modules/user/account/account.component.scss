@@ -1,6 +1,9 @@
 @import '../../../../styles';
 
-.football-page {
-  padding-bottom: to-rem(70px);
+.account {
   min-height: 80vh;
+}
+
+span {
+  color: color('red');
 }
