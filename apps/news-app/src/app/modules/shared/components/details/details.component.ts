@@ -32,26 +32,29 @@ export class DetailsComponent extends AutoUnsubscribe implements OnInit {
   ngOnInit() {
     if (this.id !== undefined) {
       this.autoUnsubscribe(
-        this.newsService.getNewsById(this.id).subscribe((res) => {
-          if (res.content.length >= 300) {
-            for (let i = 0; i < res.content.length; i++) {
+        this.newsService.getNewsById(this.id).subscribe((data) => {
+          if (data.content.length >= 300) {
+            for (let i = 0; i < data.content.length; i++) {
               if (i % 300 === 0 && i !== 0) {
                 if (
-                  res.content[i] === ' ' ||
-                  res.content[i] === '.' ||
-                  res.content[i] === '!' ||
-                  res.content === '?'
+                  data.content[i] === ' ' ||
+                  data.content[i] === '.' ||
+                  data.content[i] === '!' ||
+                  data.content === '?'
                 ) {
                   this.string += '<br><br>';
                 } else {
                   this.string += ' -<br><br>';
                 }
               }
-              this.string += res.content[i];
+
+              this.string += data.content[i];
             }
-            res.content = this.string;
+
+            data.content = this.string;
           }
-          this.item = res;
+
+          this.item = data;
         })
       );
     }

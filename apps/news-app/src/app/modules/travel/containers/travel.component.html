@@ -4,6 +4,7 @@
   </h2>
   <div *ngFor="let item of destinations">
     <app-news-card-reader
+      *ngIf="item.category === 'travel'"
       class="d-block my-5"
       [item]="item"
       [buttonHide]="false"

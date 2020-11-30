@@ -31,6 +31,6 @@ export class CheckUserStateService {
   refreshState() {
     return setTimeout(() => {
       window.location.reload();
-    }, 100);
+    }, 300);
   }
 }

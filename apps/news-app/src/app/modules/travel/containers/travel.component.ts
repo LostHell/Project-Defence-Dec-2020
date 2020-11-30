@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CheckUserStateService } from '../../../core/services/auth/check-user-state/check-user-state.service';
-import { Travel } from '../../shared/models/Travel';
 import { AutoUnsubscribe } from '../../../core/classes/AutoUnsubscribe';
-import { TravelService } from '../../../core/services/travel/travel.service';
+import { NewsService } from '../../../core/services/news/news.service';
+import { News } from '../../shared/models/News';
 
 @Component({
   selector: 'app-travel',
@@ -10,22 +10,28 @@ import { TravelService } from '../../../core/services/travel/travel.service';
   styleUrls: ['./travel.component.scss'],
 })
 export class TravelComponent extends AutoUnsubscribe implements OnInit {
-  public destinations: Travel[] = [];
+  destinations: News[] = [];
 
   isLoggedIn: boolean = this.state.getState();
 
   constructor(
     private state: CheckUserStateService,
-    private travelService: TravelService
+    private newsService: NewsService
   ) {
     super();
   }
 
   ngOnInit() {
     this.autoUnsubscribe(
-      this.travelService
-        .getDestinations()
-        .subscribe((data) => (this.destinations = data))
+      this.newsService.getNews().subscribe((data) => {
+        data.sort((a, b) => {
+          if (a.created < b.created) {
+            return 1;
+          }
+        });
+
+        this.destinations = data;
+      })
     );
   }
 }

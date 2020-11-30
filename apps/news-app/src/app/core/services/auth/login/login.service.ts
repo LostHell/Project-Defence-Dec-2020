@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import {
   GET_USER,
   LOGIN_URL,
@@ -34,5 +34,14 @@ export class LoginService {
 
   getUser(id: string): Observable<RegisterCredentials> {
     return this.http.get<RegisterCredentials>(GET_USER + `/${id}`);
+  }
+
+  changePassword(
+    id: string,
+    password: string
+  ): Observable<RegisterCredentials> {
+    return this.http
+      .put<RegisterCredentials>(GET_USER + `/${id}`, password)
+      .pipe(catchError((error) => of(error.json)));
   }
 }

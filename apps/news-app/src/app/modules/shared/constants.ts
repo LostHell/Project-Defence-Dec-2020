@@ -5,5 +5,4 @@ export const LOGOUT_URL = `${API_URL}/users/logout`;
 export const GET_USER = `${API_URL}/data/Users`;
 export const REGISTER_URL = `${API_URL}/users/register`;
 export const NEWS = `${API_URL}/data/news`;
-export const TRAVEL = `${API_URL}/data/travel`;
 export const FOOTBALL = `${API_URL}/data/footballResult`;

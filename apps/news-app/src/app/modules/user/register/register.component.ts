@@ -48,8 +48,8 @@ export class RegisterComponent extends AutoUnsubscribe {
 
   submitRegisterData() {
     if (
-      this.form.value.password === this.form.value.repeatPassword &&
-      this.form.valid
+      this.form.valid &&
+      this.form.value.password === this.form.value.repeatPassword
     ) {
       this.autoUnsubscribe(
         this.registerService

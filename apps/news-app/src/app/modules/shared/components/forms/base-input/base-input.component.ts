@@ -10,6 +10,7 @@ export class BaseInputComponent {
   @Input() form: FormGroup;
   @Input() label: string;
   @Input() name: string;
+  @Input() placeholder: string;
 
   constructor() {}
 }

@@ -29,6 +29,7 @@ export class NewsComponent extends AutoUnsubscribe implements OnInit {
             return 1;
           }
         });
+
         for (const item of data) {
           if (item.title.length > 60) {
             item.title = item.title.slice(0, 60).concat('...');

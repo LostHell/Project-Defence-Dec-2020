@@ -1,7 +1,17 @@
-<div *ngIf="isLoggedIn" class="account">
-  <div *ngIf="isAdmin" class="container text-center py-5">
-    <app-button (click)="activateAddNews()">Add news</app-button>
-    <div *ngIf="isActiveNews">
+<div *ngIf="isLoggedIn" class="container account">
+  <div *ngIf="isAdmin" class="py-5">
+    <div
+      class="buttons d-flex flex-column flex-md-row justify-content-md-between text-center"
+    >
+      <app-button (click)="activateAddNews()" class="py-2">Add news</app-button>
+      <app-button (click)="activateFootballResults()" class="py-2"
+        >Add result
+      </app-button>
+      <app-button (click)="activateShowAllNews()" class="py-2"
+        >Show news
+      </app-button>
+    </div>
+    <div *ngIf="isActiveNews" class="text-center">
       <h4 class="text-uppercase my-5">
         Create your new Un<span>censored</span> news
       </h4>
@@ -10,11 +20,13 @@
           [form]="form"
           label="Title"
           name="title"
+          placeholder="Ex. Your own title news"
         ></app-base-input>
         <app-base-input
           [form]="form"
           label="Image URL"
           name="imageUrl"
+          placeholder="Ex. Your own Image Url http(s)://www...."
         ></app-base-input>
         <app-base-input-textarea
           [form]="form"
@@ -26,13 +38,83 @@
           label="Select your type"
           name="category"
         ></app-dropdown-menu>
+        <app-button *ngIf="isActive && !hasObjectId">Create!</app-button>
+        <app-button *ngIf="isActive && hasObjectId">Update</app-button>
+        <div *ngIf="!isActive">Success!</div>
+      </form>
+    </div>
+    <div *ngIf="showAllNews" class="mt-5">
+      <div *ngFor="let item of news" class="pb-4">
+        <app-news-card-reader [item]="item"></app-news-card-reader>
+        <div class="panel-buttons d-flex justify-content-end">
+          <app-button (click)="getItem(item.objectId)">Update</app-button>
+          <app-button (click)="deleteItem(item.objectId)" class="pl-3 pr-2"
+            >Delete
+          </app-button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isSuccessDeleted" class="text-center">Success deleted!</div>
+    <div *ngIf="isActiveFootballResults" class="text-center">
+      <h4 class="text-uppercase my-5">
+        Create your new Football result
+      </h4>
+      <form
+        [formGroup]="formFootball"
+        (ngSubmit)="footballData()"
+        class="d-flex flex-column"
+      >
+        <app-base-input
+          [form]="formFootball"
+          label="Host"
+          name="host"
+          placeholder="Ex. Arsenal"
+        ></app-base-input>
+        <app-base-input
+          [form]="formFootball"
+          label="Result"
+          name="result"
+          placeholder="Ex. 2 : 2"
+        ></app-base-input>
+        <app-base-input
+          [form]="formFootball"
+          label="Guest"
+          name="guest"
+          placeholder="Ex. Barcelona"
+        ></app-base-input>
         <app-button *ngIf="isActive">Create!</app-button>
         <div *ngIf="!isActive">Success!</div>
       </form>
     </div>
   </div>
   <div *ngIf="!isAdmin">
-    Hello
+    <h4 class="text-center pt-4">
+      Hello <span>{{ user }}</span
+      >!
+    </h4>
+    <p class="text-center">Change password</p>
+    <form
+      [formGroup]="formUser"
+      (ngSubmit)="userData()"
+      class="d-flex flex-column align-items-center pt-3"
+    >
+      <app-reactive-form-input
+        [form]="formUser"
+        label="New password"
+        name="password"
+        type="password"
+        error="Password is required!"
+      ></app-reactive-form-input>
+      <app-reactive-form-input
+        [form]="formUser"
+        label="Repeat new password"
+        name="repeatPassword"
+        type="password"
+        error="Repeat password is required!"
+      ></app-reactive-form-input>
+      <app-button *ngIf="isActive">Update</app-button>
+      <div *ngIf="!isActive">Success!</div>
+    </form>
   </div>
 </div>
 <app-not-authorized *ngIf="!isLoggedIn"></app-not-authorized>
