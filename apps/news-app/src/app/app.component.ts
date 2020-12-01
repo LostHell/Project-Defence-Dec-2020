@@ -10,6 +10,8 @@ export class AppComponent {
   navigation: NavigationItem[] = [];
 
   ngOnInit() {
+    window.scrollTo({ top: 0 });
+
     const result = localStorage.getItem('isActive');
     const userToken = localStorage.getItem('user-token');
     if (result === 'false' || userToken === null) {

@@ -27,6 +27,10 @@ export class TravelComponent extends AutoUnsubscribe implements OnInit {
         data.sort((a, b) => {
           if (a.created < b.created) {
             return 1;
+          } else if (a.created === b.created) {
+            return 0;
+          } else if (a.created > b.created) {
+            return -1;
           }
         });
 

@@ -9,5 +9,10 @@ span {
 }
 
 .panel-buttons {
-  margin-top: to-rem(-20px);
+  margin-top: to-rem(-14px);
+}
+
+.date {
+  position: relative;
+  top: to-rem(-28px);
 }
