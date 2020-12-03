@@ -44,4 +44,22 @@ export class LoginService {
       .put<RegisterCredentials>(GET_USER + `/${id}`, password)
       .pipe(catchError((error) => of(error.json)));
   }
+
+  changeName(
+    id: string,
+    fullName: string
+  ): Observable<RegisterCredentials> {
+    return this.http
+      .put<RegisterCredentials>(GET_USER + `/${id}`, fullName)
+      .pipe(catchError((error) => of(error.json)));
+  }
+
+  changeEmail(
+    id: string,
+    email: string
+  ): Observable<RegisterCredentials> {
+    return this.http
+      .put<RegisterCredentials>(GET_USER + `/${id}`, email)
+      .pipe(catchError((error) => of(error.json)));
+  }
 }

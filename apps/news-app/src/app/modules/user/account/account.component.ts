@@ -12,9 +12,11 @@ import { News } from '../../shared/models/News';
   styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent extends AutoUnsubscribe implements OnInit {
-  form: FormGroup;
-  formFootball: FormGroup;
-  formUser: FormGroup;
+  formNews: FormGroup;
+  formFootballResult: FormGroup;
+  formChangePassword: FormGroup;
+  formChangeName: FormGroup;
+  formChangeEmail: FormGroup;
 
   isAdmin = false;
   isActive = true;
@@ -40,9 +42,12 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
   }
 
   ngOnInit() {
-    this.createForm();
+    this.createNewsForm();
     this.createFootballResultForm();
-    this.createFormUser();
+    this.createChangePasswordUserForm();
+    this.createChangeNameForm();
+    this.createChangeEmailForm();
+
     if (this.id !== null) {
       this.autoUnsubscribe(
         this.loginService.getUser(this.id).subscribe((res) => {
@@ -84,8 +89,8 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
     );
   }
 
-  createForm() {
-    this.form = new FormGroup({
+  createNewsForm() {
+    this.formNews = new FormGroup({
       title: new FormControl('', [
         Validators.required,
         Validators.minLength(5),
@@ -106,7 +111,7 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
   }
 
   createFootballResultForm() {
-    this.formFootball = new FormGroup({
+    this.formFootballResult = new FormGroup({
       host: new FormControl('', [Validators.required, Validators.minLength(4)]),
       result: new FormControl('', [
         Validators.required,
@@ -120,8 +125,8 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
     });
   }
 
-  createFormUser() {
-    this.formUser = new FormGroup({
+  createChangePasswordUserForm() {
+    this.formChangePassword = new FormGroup({
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(5),
@@ -133,51 +138,94 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
     });
   }
 
-  data() {
-    if (this.form.valid) {
+  createChangeNameForm() {
+    this.formChangeName = new FormGroup({
+      name: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    });
+  }
+
+  createChangeEmailForm() {
+    this.formChangeEmail = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+    });
+  }
+
+  createNews() {
+    if (this.formNews.valid) {
       if (this.newsId) {
         this.autoUnsubscribe(
-          this.newsService.updateNews(this.newsId, this.form.value).subscribe()
+          this.newsService
+            .updateNews(this.newsId, this.formNews.value)
+            .subscribe()
         );
       } else {
         this.autoUnsubscribe(
-          this.newsService.createNews(this.form.value).subscribe()
+          this.newsService.createNews(this.formNews.value).subscribe()
         );
       }
       setTimeout(() => {
-        this.form.reset();
+        this.formNews.reset();
       }, 500);
       this.isActive = false;
     }
   }
 
-  footballData() {
-    if (this.formFootball.valid) {
+  footballResult() {
+    if (this.formFootballResult.valid) {
       this.autoUnsubscribe(
         this.newsService
-          .createFootballResult(this.formFootball.value)
+          .createFootballResult(this.formFootballResult.value)
           .subscribe()
       );
       setTimeout(() => {
-        this.formFootball.reset();
+        this.formFootballResult.reset();
       }, 500);
       this.isActive = false;
     }
   }
 
-  userData() {
+  changePassword() {
     if (
-      this.formUser.valid &&
-      this.formUser.value.password === this.formUser.value.repeatPassword
+      this.formChangePassword.valid &&
+      this.formChangePassword.value.password ===
+        this.formChangePassword.value.repeatPassword
     ) {
       this.isActive = false;
       this.autoUnsubscribe(
         this.loginService
-          .changePassword(this.id, this.formUser.value)
+          .changePassword(this.id, this.formChangePassword.value)
           .subscribe()
       );
       setTimeout(() => {
-        this.formUser.reset();
+        this.formChangePassword.reset();
+      }, 500);
+    }
+  }
+
+  changeName() {
+    if (this.formChangeName.valid) {
+      this.isActive = false;
+      this.autoUnsubscribe(
+        this.loginService
+          .changeName(this.id, this.formChangeName.value)
+          .subscribe()
+      );
+      setTimeout(() => {
+        this.formChangeName.reset();
+      }, 500);
+    }
+  }
+
+  changeEmail() {
+    if (this.formChangeEmail.valid) {
+      this.isActive = false;
+      this.autoUnsubscribe(
+        this.loginService
+          .changeEmail(this.id, this.formChangeEmail.value)
+          .subscribe()
+      );
+      setTimeout(() => {
+        this.formChangeEmail.reset();
       }, 500);
     }
   }
@@ -214,10 +262,10 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
     this.autoUnsubscribe(
       this.newsService.getNewsById(objectId).subscribe((res) => {
         this.newsId = res.objectId;
-        this.form.controls['title'].setValue(res.title);
-        this.form.controls['imageUrl'].setValue(res.imageUrl);
-        this.form.controls['content'].setValue(res.content);
-        this.form.controls['category'].setValue(res.category);
+        this.formNews.controls['title'].setValue(res.title);
+        this.formNews.controls['imageUrl'].setValue(res.imageUrl);
+        this.formNews.controls['content'].setValue(res.content);
+        this.formNews.controls['category'].setValue(res.category);
       })
     );
 

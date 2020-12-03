@@ -1,5 +1,5 @@
 <div *ngIf="isLoggedIn" class="container account">
-  <div *ngIf="isAdmin" class="py-5">
+  <div *ngIf="isAdmin" class="my-5">
     <div
       class="buttons d-flex flex-column flex-md-row justify-content-md-between text-center"
     >
@@ -15,26 +15,30 @@
       <h4 class="text-uppercase my-5">
         Create your new Un<span>censored</span> news
       </h4>
-      <form [formGroup]="form" (ngSubmit)="data()" class="d-flex flex-column">
+      <form
+        [formGroup]="formNews"
+        (ngSubmit)="createNews()"
+        class="d-flex flex-column"
+      >
         <app-base-input
-          [form]="form"
+          [form]="formNews"
           label="Title"
           name="title"
           placeholder="Ex. Your own title news"
         ></app-base-input>
         <app-base-input
-          [form]="form"
+          [form]="formNews"
           label="Image URL"
           name="imageUrl"
           placeholder="Ex. Your own Image Url http(s)://www...."
         ></app-base-input>
         <app-base-input-textarea
-          [form]="form"
+          [form]="formNews"
           label="Content"
           name="content"
         ></app-base-input-textarea>
         <app-dropdown-menu
-          [form]="form"
+          [form]="formNews"
           label="Select your type"
           name="category"
         ></app-dropdown-menu>
@@ -61,24 +65,24 @@
         Create your new Football result
       </h4>
       <form
-        [formGroup]="formFootball"
-        (ngSubmit)="footballData()"
+        [formGroup]="formFootballResult"
+        (ngSubmit)="footballResult()"
         class="d-flex flex-column"
       >
         <app-base-input
-          [form]="formFootball"
+          [form]="formFootballResult"
           label="Host"
           name="host"
           placeholder="Ex. Arsenal"
         ></app-base-input>
         <app-base-input
-          [form]="formFootball"
+          [form]="formFootballResult"
           label="Result"
           name="result"
           placeholder="Ex. 2 : 2"
         ></app-base-input>
         <app-base-input
-          [form]="formFootball"
+          [form]="formFootballResult"
           label="Guest"
           name="guest"
           placeholder="Ex. Barcelona"
@@ -88,32 +92,66 @@
       </form>
     </div>
   </div>
-  <div *ngIf="!isAdmin">
-    <h4 class="text-center pt-4">
+  <div *ngIf="!isAdmin" class="my-5">
+    <h4 class="text-center">
       Hello <span>{{ user }}</span
       >!
     </h4>
     <p class="text-center">Change password</p>
     <form
-      [formGroup]="formUser"
-      (ngSubmit)="userData()"
-      class="d-flex flex-column align-items-center pt-3"
+      [formGroup]="formChangePassword"
+      (ngSubmit)="changePassword()"
+      class="d-flex flex-column align-items-center py-3"
     >
       <app-reactive-form-input
-        [form]="formUser"
+        [form]="formChangePassword"
         label="New password"
         name="password"
         type="password"
         error="Password is required!"
       ></app-reactive-form-input>
       <app-reactive-form-input
-        [form]="formUser"
+        [form]="formChangePassword"
         label="Repeat new password"
         name="repeatPassword"
         type="password"
         error="Repeat password is required!"
       ></app-reactive-form-input>
       <app-button *ngIf="isActive">Update</app-button>
+      <div *ngIf="!isActive">Success!</div>
+    </form>
+    <hr />
+    <p class="text-center mt-4">Change Name</p>
+    <form
+      [formGroup]="formChangeName"
+      (ngSubmit)="changeName()"
+      class="d-flex flex-column align-items-center py-3"
+    >
+      <app-reactive-form-input
+        [form]="formChangeName"
+        label="Full name"
+        name="name"
+        type="text"
+        error="Name is required!"
+      ></app-reactive-form-input>
+      <app-button>Update</app-button>
+      <div *ngIf="!isActive">Success!</div>
+    </form>
+    <hr />
+    <p class="text-center mt-4">Change Email</p>
+    <form
+      [formGroup]="formChangeEmail"
+      (ngSubmit)="changeEmail()"
+      class="d-flex flex-column align-items-center py-3"
+    >
+      <app-reactive-form-input
+        [form]="formChangeEmail"
+        label="Email"
+        name="email"
+        type="email"
+        error="Email is required!"
+      ></app-reactive-form-input>
+      <app-button>Update</app-button>
       <div *ngIf="!isActive">Success!</div>
     </form>
   </div>

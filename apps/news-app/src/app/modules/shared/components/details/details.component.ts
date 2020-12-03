@@ -30,6 +30,8 @@ export class DetailsComponent extends AutoUnsubscribe implements OnInit {
   }
 
   ngOnInit() {
+    window.scrollTo({ top: 0 });
+
     if (this.id !== undefined) {
       this.autoUnsubscribe(
         this.newsService.getNewsById(this.id).subscribe((data) => {
