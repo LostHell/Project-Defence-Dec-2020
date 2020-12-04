@@ -1,5 +1,4 @@
 <div *ngIf="isLoggedIn" class="container news-page">
-  <h2 class="text-uppercase py-3">Un<span>censored</span> NewsApp</h2>
   <ng-container *ngFor="let item of news">
     <app-news-card-reader
       *ngIf="item.category === 'news'"

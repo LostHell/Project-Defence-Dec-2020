@@ -2,7 +2,4 @@
 
 .text-area {
   width: 100%;
-  @include media-breakpoint-up(md) {
-    width: 75%;
-  }
 }

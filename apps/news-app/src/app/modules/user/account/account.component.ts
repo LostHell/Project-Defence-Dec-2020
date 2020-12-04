@@ -19,14 +19,17 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
   formChangeEmail: FormGroup;
 
   isAdmin = false;
-  isActive = true;
-  isActiveNews = false;
-  showAllNews = false;
+  isActiveNewsCreator = true;
+  isActiveFootballResultCreator = true;
+  isScrapedNews = true;
   isSuccessDeleted = false;
   hasObjectId = false;
-  isActiveFootballResults = false;
-  news: News[] = [];
 
+  isPasswordChanged = false;
+  isNameChanged = false;
+  isEmailChanged = false;
+
+  news: News[] = [];
   newsId = '';
 
   isLoggedIn: boolean = this.state.getState();
@@ -44,7 +47,7 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
   ngOnInit() {
     this.createNewsForm();
     this.createFootballResultForm();
-    this.createChangePasswordUserForm();
+    this.createChangePasswordForm();
     this.createChangeNameForm();
     this.createChangeEmailForm();
 
@@ -73,11 +76,11 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
         });
 
         for (const item of data) {
-          if (item.title.length > 60) {
-            item.title = item.title.slice(0, 60).concat('...');
+          if (item.title.length > 120) {
+            item.title = item.title.slice(0, 120).concat('...');
           }
-          if (item.content.length > 260) {
-            item.content = item.content.slice(0, 260).concat('...');
+          if (item.content.length > 180) {
+            item.content = item.content.slice(0, 180).concat('...');
           }
 
           const date = new Date(item.created);
@@ -85,6 +88,45 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
         }
 
         this.news = data;
+      })
+    );
+  }
+
+  getApiFootballNews() {
+    let data;
+    let counter;
+
+    this.autoUnsubscribe(
+      this.newsService.getApiFootballNews().subscribe((res) => {
+        if (res !== undefined) {
+          for (const art of res.arts) {
+            counter = 0;
+
+            data = {
+              title: art.tit,
+              imageUrl: art.img,
+              content: art.con,
+              category: 'sport',
+            };
+
+            this.isScrapedNews = false;
+
+            setTimeout(() => {
+              this.isScrapedNews = true;
+            }, 3500);
+
+            for (const main of this.news) {
+              if (data.title === main.title) {
+                counter = ++counter;
+                break;
+              }
+            }
+
+            if (counter === 0) {
+              this.newsService.createNews(data).subscribe();
+            }
+          }
+        }
       })
     );
   }
@@ -112,7 +154,11 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
 
   createFootballResultForm() {
     this.formFootballResult = new FormGroup({
-      host: new FormControl('', [Validators.required, Validators.minLength(4)]),
+      host: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(14),
+      ]),
       result: new FormControl('', [
         Validators.required,
         Validators.minLength(5),
@@ -121,11 +167,12 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
       guest: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
+        Validators.maxLength(14),
       ]),
     });
   }
 
-  createChangePasswordUserForm() {
+  createChangePasswordForm() {
     this.formChangePassword = new FormGroup({
       password: new FormControl('', [
         Validators.required,
@@ -163,24 +210,37 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
           this.newsService.createNews(this.formNews.value).subscribe()
         );
       }
+
+      this.ngOnInit();
+      this.isActiveNewsCreator = false;
+
       setTimeout(() => {
         this.formNews.reset();
       }, 500);
-      this.isActive = false;
+
+      setTimeout(() => {
+        this.isActiveNewsCreator = true;
+      }, 3500);
     }
   }
 
-  footballResult() {
+  createFootballResult() {
     if (this.formFootballResult.valid) {
       this.autoUnsubscribe(
         this.newsService
           .createFootballResult(this.formFootballResult.value)
           .subscribe()
       );
+
+      this.isActiveFootballResultCreator = false;
+
       setTimeout(() => {
         this.formFootballResult.reset();
       }, 500);
-      this.isActive = false;
+
+      setTimeout(() => {
+        this.isActiveFootballResultCreator = true;
+      }, 3500);
     }
   }
 
@@ -190,12 +250,14 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
       this.formChangePassword.value.password ===
         this.formChangePassword.value.repeatPassword
     ) {
-      this.isActive = false;
+      this.isPasswordChanged = true;
+
       this.autoUnsubscribe(
         this.loginService
           .changePassword(this.id, this.formChangePassword.value)
           .subscribe()
       );
+
       setTimeout(() => {
         this.formChangePassword.reset();
       }, 500);
@@ -204,12 +266,16 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
 
   changeName() {
     if (this.formChangeName.valid) {
-      this.isActive = false;
+      this.isNameChanged = true;
+
       this.autoUnsubscribe(
         this.loginService
           .changeName(this.id, this.formChangeName.value)
-          .subscribe()
+          .subscribe((res) => {
+            this.user = res.name;
+          })
       );
+
       setTimeout(() => {
         this.formChangeName.reset();
       }, 500);
@@ -218,47 +284,21 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
 
   changeEmail() {
     if (this.formChangeEmail.valid) {
-      this.isActive = false;
+      this.isEmailChanged = true;
+
       this.autoUnsubscribe(
         this.loginService
           .changeEmail(this.id, this.formChangeEmail.value)
           .subscribe()
       );
+
       setTimeout(() => {
         this.formChangeEmail.reset();
       }, 500);
     }
   }
 
-  activateAddNews() {
-    this.isActive = true;
-    this.showAllNews = false;
-    this.isActiveFootballResults = false;
-    this.isActiveNews = !this.isActiveNews;
-    if (this.isActiveNews === false) {
-      this.hasObjectId = false;
-    }
-    this.ngOnInit();
-  }
-
-  activateFootballResults() {
-    this.isActive = true;
-    this.isActiveNews = false;
-    this.showAllNews = false;
-    this.isActiveFootballResults = !this.isActiveFootballResults;
-    this.hasObjectId = false;
-  }
-
-  activateShowAllNews() {
-    this.isActiveNews = false;
-    this.isActiveFootballResults = false;
-    this.showAllNews = !this.showAllNews;
-    this.hasObjectId = false;
-    this.ngOnInit();
-  }
-
   getItem(objectId: string) {
-    this.activateAddNews();
     this.autoUnsubscribe(
       this.newsService.getNewsById(objectId).subscribe((res) => {
         this.newsId = res.objectId;
@@ -273,9 +313,16 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
   }
 
   deleteItem(objectId: string) {
-    this.autoUnsubscribe(this.newsService.deleteNews(objectId).subscribe());
-    this.showAllNews = !this.showAllNews;
+    this.autoUnsubscribe(
+      this.newsService.deleteNews(objectId).subscribe((res) => {
+        if (res !== null && res !== undefined) {
+          this.ngOnInit();
+        }
+      })
+    );
+
     this.isSuccessDeleted = true;
+
     setTimeout(() => {
       this.isSuccessDeleted = false;
     }, 3500);

@@ -1,96 +1,121 @@
 <div *ngIf="isLoggedIn" class="container account">
   <div *ngIf="isAdmin" class="my-5">
-    <div
-      class="buttons d-flex flex-column flex-md-row justify-content-md-between text-center"
-    >
-      <app-button (click)="activateAddNews()" class="py-2">Add news</app-button>
-      <app-button (click)="activateFootballResults()" class="py-2"
-        >Add result
-      </app-button>
-      <app-button (click)="activateShowAllNews()" class="py-2"
-        >Show news
-      </app-button>
-    </div>
-    <div *ngIf="isActiveNews" class="text-center">
-      <h4 class="text-uppercase my-5">
-        Create your new Un<span>censored</span> news
-      </h4>
-      <form
-        [formGroup]="formNews"
-        (ngSubmit)="createNews()"
-        class="d-flex flex-column"
-      >
-        <app-base-input
-          [form]="formNews"
-          label="Title"
-          name="title"
-          placeholder="Ex. Your own title news"
-        ></app-base-input>
-        <app-base-input
-          [form]="formNews"
-          label="Image URL"
-          name="imageUrl"
-          placeholder="Ex. Your own Image Url http(s)://www...."
-        ></app-base-input>
-        <app-base-input-textarea
-          [form]="formNews"
-          label="Content"
-          name="content"
-        ></app-base-input-textarea>
-        <app-dropdown-menu
-          [form]="formNews"
-          label="Select your type"
-          name="category"
-        ></app-dropdown-menu>
-        <app-button *ngIf="isActive && !hasObjectId">Create!</app-button>
-        <app-button *ngIf="isActive && hasObjectId">Update</app-button>
-        <div *ngIf="!isActive">Success!</div>
-      </form>
-    </div>
-    <div *ngIf="showAllNews" class="mt-5">
-      <div *ngFor="let item of news" class="pb-4">
-        <app-news-card-reader [item]="item"></app-news-card-reader>
-        <div class="panel-buttons d-flex justify-content-end">
-          <app-button (click)="getItem(item.objectId)">Update</app-button>
-          <app-button (click)="deleteItem(item.objectId)" class="pl-3 pr-2"
-            >Delete
-          </app-button>
+    <mat-tab-group class="align-items-center">
+      <mat-tab>
+        <ng-template mat-tab-label>Add News</ng-template>
+        <div *ngIf="isActiveNewsCreator" class="text-center">
+          <h4 class="text-uppercase my-5">
+            Create your new Un<span>censored</span> news
+          </h4>
+          <form
+            [formGroup]="formNews"
+            (ngSubmit)="createNews()"
+            class="d-flex flex-column"
+          >
+            <app-base-input
+              [form]="formNews"
+              label="Title"
+              name="title"
+              placeholder="Ex. Your own title news"
+            ></app-base-input>
+            <app-base-input
+              [form]="formNews"
+              label="Image URL"
+              name="imageUrl"
+              placeholder="Ex. Your own Image Url http(s)://www...."
+            ></app-base-input>
+            <app-base-input-textarea
+              [form]="formNews"
+              label="Content"
+              name="content"
+            ></app-base-input-textarea>
+            <app-dropdown-menu
+              [form]="formNews"
+              label="Select your type"
+              name="category"
+            ></app-dropdown-menu>
+            <app-button *ngIf="isActiveNewsCreator && !hasObjectId"
+              >Create!
+            </app-button>
+            <app-button *ngIf="isActiveNewsCreator && hasObjectId"
+              >Update
+            </app-button>
+          </form>
         </div>
-        <em class="date">{{ item.created }}</em>
-      </div>
-    </div>
-    <div *ngIf="isSuccessDeleted" class="text-center">Success deleted!</div>
-    <div *ngIf="isActiveFootballResults" class="text-center">
-      <h4 class="text-uppercase my-5">
-        Create your new Football result
-      </h4>
-      <form
-        [formGroup]="formFootballResult"
-        (ngSubmit)="footballResult()"
-        class="d-flex flex-column"
-      >
-        <app-base-input
-          [form]="formFootballResult"
-          label="Host"
-          name="host"
-          placeholder="Ex. Arsenal"
-        ></app-base-input>
-        <app-base-input
-          [form]="formFootballResult"
-          label="Result"
-          name="result"
-          placeholder="Ex. 2 : 2"
-        ></app-base-input>
-        <app-base-input
-          [form]="formFootballResult"
-          label="Guest"
-          name="guest"
-          placeholder="Ex. Barcelona"
-        ></app-base-input>
-        <app-button *ngIf="isActive">Create!</app-button>
-        <div *ngIf="!isActive">Success!</div>
-      </form>
-    </div>
+        <div *ngIf="!isActiveNewsCreator" class="text-center">Success!</div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>Add Football Result</ng-template>
+        <div *ngIf="isActiveFootballResultCreator" class="text-center">
+          <h4 class="text-uppercase my-5">
+            Create your new Football result
+          </h4>
+          <form
+            [formGroup]="formFootballResult"
+            (ngSubmit)="createFootballResult()"
+            class="d-flex flex-column"
+          >
+            <app-base-input
+              [form]="formFootballResult"
+              label="Host"
+              name="host"
+              placeholder="Ex. Arsenal"
+            ></app-base-input>
+            <app-base-input
+              [form]="formFootballResult"
+              label="Result"
+              name="result"
+              placeholder="Ex. 2 : 2"
+            ></app-base-input>
+            <app-base-input
+              [form]="formFootballResult"
+              label="Guest"
+              name="guest"
+              placeholder="Ex. Barcelona"
+            ></app-base-input>
+            <app-button *ngIf="isActiveFootballResultCreator"
+              >Create!
+            </app-button>
+          </form>
+        </div>
+        <div *ngIf="!isActiveFootballResultCreator" class="text-center">
+          Success!
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>Fetch Football News</ng-template>
+        <div class="text-center pt-5">
+          <app-button
+            *ngIf="isScrapedNews"
+            (click)="getApiFootballNews()"
+            class="py-2"
+            >Fetch now
+          </app-button>
+          <div
+            *ngIf="!isScrapedNews"
+            class="d-flex justify-content-center align-items-center py-2"
+          >
+            Success!
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>Show News</ng-template>
+        <ng-container *ngIf="!isSuccessDeleted">
+          <div *ngFor="let item of news" class="pb-4">
+            <app-news-card-reader [item]="item"></app-news-card-reader>
+            <div class="panel-buttons d-flex justify-content-end">
+              <app-button (click)="getItem(item.objectId)">Update</app-button>
+              <app-button (click)="deleteItem(item.objectId)" class="pl-3 pr-2"
+                >Delete
+              </app-button>
+            </div>
+            <em class="date">{{ item.created }}</em>
+          </div>
+        </ng-container>
+        <div *ngIf="isSuccessDeleted" class="text-center">Success deleted!</div>
+      </mat-tab>
+    </mat-tab-group>
   </div>
   <div *ngIf="!isAdmin" class="my-5">
     <h4 class="text-center">
@@ -117,8 +142,8 @@
         type="password"
         error="Repeat password is required!"
       ></app-reactive-form-input>
-      <app-button *ngIf="isActive">Update</app-button>
-      <div *ngIf="!isActive">Success!</div>
+      <app-button *ngIf="!isPasswordChanged">Update</app-button>
+      <div *ngIf="isPasswordChanged">Success!</div>
     </form>
     <hr />
     <p class="text-center mt-4">Change Name</p>
@@ -134,8 +159,8 @@
         type="text"
         error="Name is required!"
       ></app-reactive-form-input>
-      <app-button>Update</app-button>
-      <div *ngIf="!isActive">Success!</div>
+      <app-button *ngIf="!isNameChanged">Update</app-button>
+      <div *ngIf="isNameChanged">Success!</div>
     </form>
     <hr />
     <p class="text-center mt-4">Change Email</p>
@@ -151,8 +176,8 @@
         type="email"
         error="Email is required!"
       ></app-reactive-form-input>
-      <app-button>Update</app-button>
-      <div *ngIf="!isActive">Success!</div>
+      <app-button *ngIf="!isEmailChanged">Update</app-button>
+      <div *ngIf="isEmailChanged">Success!</div>
     </form>
   </div>
 </div>

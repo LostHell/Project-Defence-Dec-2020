@@ -1,8 +1,8 @@
 @import '../../../../../../styles';
 
 .card {
-  color: color('white');
-  background-color: color('dark-gray');
+  color: color('dark-gray');
+  background-color: color('white');
 
   .card-title {
     font-size: to-rem(16px);

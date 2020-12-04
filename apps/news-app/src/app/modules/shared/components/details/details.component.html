@@ -1,8 +1,8 @@
-<div class="details" *ngIf="isLoggedIn">
-  <div *ngIf="item" class="container mb-5">
+<div *ngIf="isLoggedIn" class="container">
+  <div *ngIf="item" class="card">
     <img class="card-img-top" [src]="item.imageUrl" alt="Card image cap" />
     <div class="card-body">
-      <h3 class="card-title">{{ item.title }}</h3>
+      <h3 class="card-title font-weight-bold" [innerHTML]=""></h3>
       <p class="card-text" [innerHTML]="item.content"></p>
     </div>
   </div>

@@ -38,8 +38,8 @@ export class NewsComponent extends AutoUnsubscribe implements OnInit {
           if (item.title.length > 60) {
             item.title = item.title.slice(0, 60).concat('...');
           }
-          if (item.content.length > 260) {
-            item.content = item.content.slice(0, 260).concat('...');
+          if (item.content.length > 180) {
+            item.content = item.content.slice(0, 180).concat('...');
           }
 
           this.news.push(item);

@@ -1,12 +1,13 @@
 @import '../../../../../styles';
 
-.details {
+.container {
+  padding-bottom: to-rem(70px);
   min-height: 80vh;
 }
 
 .card-body {
-  background-color: color(dark-gray);
-  color: color('white');
+  color: color('dark-gray');
+  background-color: color('white');
 }
 
 .card-title {

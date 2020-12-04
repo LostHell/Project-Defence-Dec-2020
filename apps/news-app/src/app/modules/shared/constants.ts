@@ -6,3 +6,4 @@ export const GET_USER = `${API_URL}/data/Users`;
 export const REGISTER_URL = `${API_URL}/users/register`;
 export const NEWS = `${API_URL}/data/news`;
 export const FOOTBALL = `${API_URL}/data/footballResult`;
+export const API_FOOTBALL_NEWS = 'https://livescore6.p.rapidapi.com/news/list';
