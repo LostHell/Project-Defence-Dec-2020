@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class CheckUserStateService {
+export class LocalStorageServiceService {
   constructor() {}
 
   getState(): boolean {
     const isActiveValue = localStorage.getItem('isActive');
     const userToken = localStorage.getItem('user-token');
+
     if (isActiveValue === 'false' || userToken === null) {
       return false;
     }

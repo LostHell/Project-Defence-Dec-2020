@@ -50,9 +50,6 @@ export class AdminAccountComponent extends AutoUnsubscribe implements OnInit {
           if (item.content.length > 180) {
             item.content = item.content.slice(0, 180).concat('...');
           }
-
-          const date = new Date(item.created);
-          item.created = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
         }
 
         this.news = data;
@@ -68,32 +65,34 @@ export class AdminAccountComponent extends AutoUnsubscribe implements OnInit {
     this.autoUnsubscribe(
       this.newsService.getApiFootballNews().subscribe((res) => {
         if (res !== undefined) {
-          for (const art of res.arts) {
+          for (const footballNewsItem of res.arts) {
             counter = 0;
 
             data = {
-              title: art.tit,
-              imageUrl: art.img,
-              content: art.con,
+              title: footballNewsItem.tit,
+              imageUrl: footballNewsItem.img,
+              content: footballNewsItem.con,
               category: 'sport',
             };
 
-            this.isReceivedFootballNewsApi = false;
-
-            setTimeout(() => {
-              this.isReceivedFootballNewsApi = true;
-            }, 3500);
-
-            for (const main of this.news) {
-              if (data.title === main.title) {
+            for (const item of this.news) {
+              if (data.title === item.title) {
                 counter = ++counter;
                 break;
               }
             }
 
             if (counter === 0) {
-              this.newsService.createNews(data).subscribe();
+              this.newsService.createNews(data).subscribe((newData) => {
+                this.news.push(newData);
+              });
             }
+
+            this.isReceivedFootballNewsApi = false;
+
+            setTimeout(() => {
+              this.isReceivedFootballNewsApi = true;
+            }, 3500);
           }
         }
       })

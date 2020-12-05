@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CheckUserStateService } from '../../../core/services/auth/check-user-state/check-user-state.service';
+import { LocalStorageServiceService } from '../../../core/services/auth/check-user-state/LocalStorageService.service';
 import { AutoUnsubscribe } from '../../../core/classes/AutoUnsubscribe';
 import { NewsService } from '../../../core/services/news/news.service';
 import { News } from '../../shared/models/News';
@@ -15,7 +15,7 @@ export class TravelComponent extends AutoUnsubscribe implements OnInit {
   isLoggedIn: boolean = this.state.getState();
 
   constructor(
-    private state: CheckUserStateService,
+    private state: LocalStorageServiceService,
     private newsService: NewsService
   ) {
     super();

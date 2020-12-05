@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginService } from '../../../core/services/auth/login/login.service';
+import { UserService } from '../../../core/services/auth/user/user.service';
 import { Router } from '@angular/router';
-import { CheckUserStateService } from '../../../core/services/auth/check-user-state/check-user-state.service';
+import { LocalStorageServiceService } from '../../../core/services/auth/check-user-state/LocalStorageService.service';
 import { AutoUnsubscribe } from '../../../core/classes/AutoUnsubscribe';
 
 @Component({
@@ -16,8 +16,8 @@ export class LoginComponent extends AutoUnsubscribe {
   isLoggedIn: boolean = this.state.getState();
 
   constructor(
-    private loginService: LoginService,
-    private state: CheckUserStateService,
+    private userService: UserService,
+    private state: LocalStorageServiceService,
     private router: Router
   ) {
     super();
@@ -41,7 +41,7 @@ export class LoginComponent extends AutoUnsubscribe {
   submitLoginData() {
     if (this.form.valid) {
       this.autoUnsubscribe(
-        this.loginService.userLogin(this.form.value).subscribe((res) => {
+        this.userService.userLogin(this.form.value).subscribe((res) => {
           if (res['user-token']) {
             this.state.setState('user-token', res['user-token']);
             localStorage.setItem('id', res['objectId']);

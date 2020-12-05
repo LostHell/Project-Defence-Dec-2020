@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CheckUserStateService } from '../../../core/services/auth/check-user-state/check-user-state.service';
+import { LocalStorageServiceService } from '../../../core/services/auth/check-user-state/LocalStorageService.service';
 import { AutoUnsubscribe } from '../../../core/classes/AutoUnsubscribe';
 import { News } from '../../shared/models/News';
 import { NewsService } from '../../../core/services/news/news.service';
@@ -19,7 +19,7 @@ export class SportComponent extends AutoUnsubscribe implements OnInit {
 
   constructor(
     private newsService: NewsService,
-    private state: CheckUserStateService
+    private state: LocalStorageServiceService
   ) {
     super();
   }

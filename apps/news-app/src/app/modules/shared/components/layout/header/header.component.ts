@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { NavigationItem } from '../../../models/NavigationItem';
-import { CheckUserStateService } from '../../../../../core/services/auth/check-user-state/check-user-state.service';
-import { LoginService } from '../../../../../core/services/auth/login/login.service';
+import { LocalStorageServiceService } from '../../../../../core/services/auth/check-user-state/LocalStorageService.service';
+import { UserService } from '../../../../../core/services/auth/user/user.service';
 import { AutoUnsubscribe } from '../../../../../core/classes/AutoUnsubscribe';
 
 @Component({
@@ -18,8 +18,8 @@ export class HeaderComponent extends AutoUnsubscribe {
   isLoggedIn: boolean = this.state.getState();
 
   constructor(
-    private state: CheckUserStateService,
-    private loginService: LoginService
+    private state: LocalStorageServiceService,
+    private userService: UserService
   ) {
     super();
   }
@@ -34,6 +34,6 @@ export class HeaderComponent extends AutoUnsubscribe {
 
   logout() {
     this.state.removeState();
-    this.autoUnsubscribe(this.loginService.userLogout().subscribe());
+    this.autoUnsubscribe(this.userService.userLogout().subscribe());
   }
 }

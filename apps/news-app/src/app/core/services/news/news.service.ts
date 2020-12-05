@@ -16,6 +16,7 @@ import { FootballResult } from '../../../modules/shared/models/Football-Result';
 export class NewsService {
   constructor(private http: HttpClient) {}
 
+  // News
   getNews(): Observable<News[]> {
     return this.http
       .get<News[]>(NEWS + `?pageSize=100&offset=1`)

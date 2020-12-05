@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { NavigationItem } from '../../../models/NavigationItem';
-import { CheckUserStateService } from '../../../../../core/services/auth/check-user-state/check-user-state.service';
+import { LocalStorageServiceService } from '../../../../../core/services/auth/check-user-state/LocalStorageService.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -13,7 +13,7 @@ export class SidenavComponent {
 
   isLoggedIn: boolean = this.state.getState();
 
-  constructor(private state: CheckUserStateService) {}
+  constructor(private state: LocalStorageServiceService) {}
 
   onSidenavClose() {
     this.sidenavClose.emit();

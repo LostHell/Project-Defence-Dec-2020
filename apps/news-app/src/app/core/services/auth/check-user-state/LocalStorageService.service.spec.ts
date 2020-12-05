@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CheckUserStateService } from './check-user-state.service';
+import { LocalStorageServiceService } from './LocalStorageService.service';
 
 describe('CheckUserStateService', () => {
-  let service: CheckUserStateService;
+  let service: LocalStorageServiceService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(CheckUserStateService);
+    service = TestBed.inject(LocalStorageServiceService);
   });
 
   it('should be created', () => {

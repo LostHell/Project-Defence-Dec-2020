@@ -72,9 +72,11 @@
             >Delete
           </app-button>
         </div>
-        <em class="date">{{ item.created }}</em>
+        <em class="date">{{ item.created | date: 'MMM d, y' }}</em>
       </div>
     </div>
-    <div *ngIf="isSuccessDeleted" class="text-center">Success deleted!</div>
+    <div *ngIf="isSuccessDeleted" class="text-center mt-5">
+      Success deleted!
+    </div>
   </mat-tab>
 </mat-tab-group>

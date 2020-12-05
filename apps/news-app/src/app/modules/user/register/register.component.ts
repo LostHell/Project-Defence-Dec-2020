@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RegisterService } from '../../../core/services/auth/register/register.service';
-import { CheckUserStateService } from '../../../core/services/auth/check-user-state/check-user-state.service';
+import { UserService } from '../../../core/services/auth/user/user.service';
+import { LocalStorageServiceService } from '../../../core/services/auth/check-user-state/LocalStorageService.service';
 import { AutoUnsubscribe } from '../../../core/classes/AutoUnsubscribe';
 
 @Component({
@@ -15,8 +15,8 @@ export class RegisterComponent extends AutoUnsubscribe {
   isLoggedIn: boolean = this.state.getState();
 
   constructor(
-    private registerService: RegisterService,
-    private state: CheckUserStateService,
+    private userService: UserService,
+    private state: LocalStorageServiceService,
     private router: Router
   ) {
     super();
@@ -52,9 +52,7 @@ export class RegisterComponent extends AutoUnsubscribe {
       this.form.value.password === this.form.value.repeatPassword
     ) {
       this.autoUnsubscribe(
-        this.registerService
-          .userRegister(this.form.value)
-          .subscribe((res) => res)
+        this.userService.userRegister(this.form.value).subscribe((res) => res)
       );
       setTimeout(() => {
         this.router.navigateByUrl('user/login');

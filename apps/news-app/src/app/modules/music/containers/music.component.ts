@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CheckUserStateService } from '../../../core/services/auth/check-user-state/check-user-state.service';
+import { LocalStorageServiceService } from '../../../core/services/auth/check-user-state/LocalStorageService.service';
 
 @Component({
   selector: 'app-music',
@@ -68,7 +68,7 @@ export class MusicComponent {
 
   isLoggedIn: boolean = this.state.getState();
 
-  constructor(private state: CheckUserStateService) {}
+  constructor(private state: LocalStorageServiceService) {}
 
   // TO DO UNSUBSCRIBE
 }
