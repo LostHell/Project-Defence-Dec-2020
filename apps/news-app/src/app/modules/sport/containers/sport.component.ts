@@ -11,7 +11,7 @@ import { FootballResult } from '../../shared/models/Football-Result';
   styleUrls: ['./sport.component.scss'],
 })
 export class SportComponent extends AutoUnsubscribe implements OnInit {
-  public football: FootballResult[] = [];
+  public footballResults: FootballResult[] = [];
 
   public news: News[] = [];
 
@@ -62,10 +62,10 @@ export class SportComponent extends AutoUnsubscribe implements OnInit {
         });
         if (data.length > 5) {
           for (let i = 0; i < 5; i++) {
-            this.football.push(data[i]);
+            this.footballResults.push(data[i]);
           }
         } else {
-          this.football = data;
+          this.footballResults = data;
         }
       })
     );

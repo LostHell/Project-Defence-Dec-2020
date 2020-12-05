@@ -1,0 +1,36 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="createNews()"
+  class="d-flex flex-column text-center"
+>
+  <app-base-input
+    [form]="form"
+    label="Title"
+    name="title"
+    placeholder="Ex. Your own title news"
+  ></app-base-input>
+  <app-base-input
+    [form]="form"
+    label="Image URL"
+    name="imageUrl"
+    placeholder="Ex. Your own Image Url http(s)://www...."
+  ></app-base-input>
+  <app-base-input-textarea
+    [form]="form"
+    label="Content"
+    name="content"
+  ></app-base-input-textarea>
+  <app-dropdown-menu
+    [form]="form"
+    label="Select your type"
+    name="category"
+  ></app-dropdown-menu>
+  <div *ngIf="newsId" class="d-flex justify-content-between">
+    <app-button *ngIf="!isSuccess">Update</app-button>
+    <app-button *ngIf="!isSuccess" (click)="closeDialog()">Close</app-button>
+  </div>
+  <div *ngIf="!newsId" class="text-center">
+    <app-button *ngIf="!isSuccess">Create</app-button>
+  </div>
+  <div *ngIf="isSuccess">Success!</div>
+</form>

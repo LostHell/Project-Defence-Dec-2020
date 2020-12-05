@@ -1,0 +1,61 @@
+<h4 class="text-center">
+  Hello <span>{{ user }}</span
+>!
+</h4>
+<p class="text-center">Change password</p>
+<form
+  [formGroup]="formChangePassword"
+  (ngSubmit)="changePassword()"
+  class="d-flex flex-column align-items-center py-3"
+>
+  <app-reactive-form-input
+    [form]="formChangePassword"
+    label="New password"
+    name="password"
+    type="password"
+    error="Password is required!"
+  ></app-reactive-form-input>
+  <app-reactive-form-input
+    [form]="formChangePassword"
+    label="Repeat new password"
+    name="repeatPassword"
+    type="password"
+    error="Repeat password is required!"
+  ></app-reactive-form-input>
+  <app-button *ngIf="!isPasswordChanged">Update</app-button>
+  <div *ngIf="isPasswordChanged">Success!</div>
+</form>
+<hr />
+<p class="text-center mt-4">Change Name</p>
+<form
+  [formGroup]="formChangeName"
+  (ngSubmit)="changeName()"
+  class="d-flex flex-column align-items-center py-3"
+>
+  <app-reactive-form-input
+    [form]="formChangeName"
+    label="Full name"
+    name="name"
+    type="text"
+    error="Name is required!"
+  ></app-reactive-form-input>
+  <app-button *ngIf="!isNameChanged">Update</app-button>
+  <div *ngIf="isNameChanged">Success!</div>
+</form>
+<hr />
+<p class="text-center mt-4">Change Email</p>
+<form
+  [formGroup]="formChangeEmail"
+  (ngSubmit)="changeEmail()"
+  class="d-flex flex-column align-items-center py-3"
+>
+  <app-reactive-form-input
+    [form]="formChangeEmail"
+    label="Email"
+    name="email"
+    type="email"
+    error="Email is required!"
+  ></app-reactive-form-input>
+  <app-button *ngIf="!isEmailChanged">Update</app-button>
+  <div *ngIf="isEmailChanged">Success!</div>
+</form>

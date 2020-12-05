@@ -1,5 +1,5 @@
 <div *ngIf="isLoggedIn" class="container football-page">
-  <app-football-result-table [data]="football"></app-football-result-table>
+  <app-football-result-table [data]="footballResults"></app-football-result-table>
   <div *ngFor="let item of news">
     <app-news-card-reader
       *ngIf="item.category === 'sport'"

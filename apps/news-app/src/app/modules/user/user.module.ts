@@ -7,9 +7,19 @@ import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountComponent } from './account/account.component';
 import { MaterialModule } from '../material/material.module';
+import { UserAccountComponent } from './account/containers/user-account/user-account.component';
+import { AdminAccountComponent } from './account/containers/admin-account/admin-account.component';
+import { FormComponent } from './account/components/form/form.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, AccountComponent],
+  declarations: [
+    LoginComponent,
+    RegisterComponent,
+    AccountComponent,
+    UserAccountComponent,
+    AdminAccountComponent,
+    FormComponent,
+  ],
   imports: [
     CommonModule,
     UserRoutingModule,

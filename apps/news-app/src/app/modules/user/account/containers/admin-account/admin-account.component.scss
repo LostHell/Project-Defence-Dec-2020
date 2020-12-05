@@ -1,0 +1,11 @@
+@import '../../../../../../styles';
+
+.tabs {
+  @include media-breakpoint-up(md) {
+    align-items: center;
+  }
+}
+
+span {
+  color: color('red');
+}

@@ -4,15 +4,11 @@
   min-height: 80vh;
 }
 
-span {
-  color: color('red');
-}
-
-.panel-buttons {
+::ng-deep .panel-buttons {
   margin-top: to-rem(-14px);
 }
 
-.date {
+::ng-deep .date {
   position: relative;
   top: to-rem(-28px);
 }
