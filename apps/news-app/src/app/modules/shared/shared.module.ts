@@ -9,8 +9,14 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 import { SidenavComponent } from './components/layout/sidenav/sidenav.component';
 
 import { ReactiveInputComponent } from './components/forms/reactive-input/reactive-input.component';
-import { CardComponent } from './components/card/card/card.component';
-import { MusicCardComponent } from './components/music-card/music-card/music-card.component';
+import { NewsCardComponent } from './components/cards/news-card-render/news-card.component';
+import { MusicCardComponent } from '../music/components/music-card-render/music-card.component';
+import { ButtonComponent } from './components/button/button/button.component';
+import { NotAuthorizedComponent } from './components/not-authorized/not-authorized.component';
+import { DetailsComponent } from './components/details/details.component';
+import { DropdownMenuComponent } from './components/dropdown-menu/dropdown-menu.component';
+import { BaseInputComponent } from './components/forms/base-input/base-input.component';
+import { BaseInputTextareaComponent } from './components/forms/base-input-textarea/base-input-textarea.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, MaterialModule, ReactiveFormsModule],
@@ -19,16 +25,27 @@ import { MusicCardComponent } from './components/music-card/music-card/music-car
     FooterComponent,
     SidenavComponent,
     ReactiveInputComponent,
-    CardComponent,
+    NewsCardComponent,
     MusicCardComponent,
+    ButtonComponent,
+    NotAuthorizedComponent,
+    DetailsComponent,
+    DropdownMenuComponent,
+    BaseInputComponent,
+    BaseInputTextareaComponent,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     SidenavComponent,
     ReactiveInputComponent,
-    CardComponent,
+    NewsCardComponent,
     MusicCardComponent,
+    ButtonComponent,
+    NotAuthorizedComponent,
+    DropdownMenuComponent,
+    BaseInputComponent,
+    BaseInputTextareaComponent,
   ],
 })
 export class SharedModule {}

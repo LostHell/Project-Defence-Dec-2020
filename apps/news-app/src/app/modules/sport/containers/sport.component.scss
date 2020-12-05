@@ -1,5 +1,6 @@
 @import '../../../../styles';
 
 .football-page {
-  padding-bottom: 5rem;
+  padding-bottom: to-rem(70px);
+  min-height: 80vh;
 }

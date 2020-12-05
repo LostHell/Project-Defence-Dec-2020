@@ -1,9 +1,23 @@
-<div class="container d-flex justify-content-center">
-  <form action="" class="d-flex flex-column px-4 py-3">
-    <label class="pt-3 pb-2" for="email">Email</label>
-    <input type="text" id="email" placeholder="example@example.com" />
-    <label class="pt-3 pb-2" for="password">Password</label>
-    <input type="password" id="password" placeholder="password" />
-    <input type="submit" value="Login" />
+<div *ngIf="!isLoggedIn" class="container d-flex justify-content-center">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="submitLoginData()"
+    class="form d-flex flex-column"
+  >
+    <app-reactive-form-input
+      [form]="form"
+      name="login"
+      label="Email"
+      type="email"
+      error="Please enter your email!"
+    ></app-reactive-form-input>
+    <app-reactive-form-input
+      [form]="form"
+      name="password"
+      label="Password"
+      type="password"
+      error="Please enter your password!"
+    ></app-reactive-form-input>
+    <app-button>Login</app-button>
   </form>
 </div>

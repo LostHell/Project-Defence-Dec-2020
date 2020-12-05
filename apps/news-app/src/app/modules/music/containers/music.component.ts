@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { LocalStorageServiceService } from '../../../core/services/auth/check-user-state/LocalStorageService.service';
 
 @Component({
   selector: 'app-music',
   templateUrl: './music.component.html',
   styleUrls: ['./music.component.scss'],
 })
-export class MusicComponent implements OnInit {
+export class MusicComponent {
   public musicArtistsData = [
     {
       id: 1,
@@ -65,7 +66,9 @@ export class MusicComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  isLoggedIn: boolean = this.state.getState();
 
-  ngOnInit(): void {}
+  constructor(private state: LocalStorageServiceService) {}
+
+  // TO DO UNSUBSCRIBE
 }

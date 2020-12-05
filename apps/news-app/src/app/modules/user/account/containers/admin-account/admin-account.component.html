@@ -1,0 +1,82 @@
+<mat-tab-group class="tabs">
+  <mat-tab>
+    <ng-template mat-tab-label>Add News</ng-template>
+    <div class="text-center">
+      <h4 class="text-uppercase my-5">
+        Create your new Un<span>censored</span> news
+      </h4>
+      <app-form (caller)="getNews()"></app-form>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>Add Football Result</ng-template>
+    <div *ngIf="isActiveFootballResultCreator" class="text-center">
+      <h4 class="text-uppercase my-5">
+        Create your new Football result
+      </h4>
+      <form
+        [formGroup]="formFootballResult"
+        (ngSubmit)="createFootballResult()"
+        class="d-flex flex-column"
+      >
+        <app-base-input
+          [form]="formFootballResult"
+          label="Host"
+          name="host"
+          placeholder="Ex. Arsenal"
+        ></app-base-input>
+        <app-base-input
+          [form]="formFootballResult"
+          label="Result"
+          name="result"
+          placeholder="Ex. 2 : 2"
+        ></app-base-input>
+        <app-base-input
+          [form]="formFootballResult"
+          label="Guest"
+          name="guest"
+          placeholder="Ex. Barcelona"
+        ></app-base-input>
+        <app-button *ngIf="isActiveFootballResultCreator">Create!</app-button>
+      </form>
+    </div>
+    <div *ngIf="!isActiveFootballResultCreator" class="text-center">
+      Success!
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>Fetch Football News</ng-template>
+    <div class="text-center pt-5">
+      <app-button
+        *ngIf="isReceivedFootballNewsApi"
+        (click)="getFootballNewsApi()"
+        class="py-2"
+        >Fetch now
+      </app-button>
+      <div
+        *ngIf="!isReceivedFootballNewsApi"
+        class="d-flex justify-content-center align-items-center py-2"
+      >
+        Success!
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>Show News</ng-template>
+    <div *ngIf="!isSuccessDeleted" class="mt-5">
+      <div *ngFor="let item of news" class="my-3">
+        <app-news-card-reader [item]="item"></app-news-card-reader>
+        <div class="panel-buttons d-flex justify-content-end">
+          <app-button (click)="getDialogItem(item.objectId)">Update</app-button>
+          <app-button (click)="deleteItem(item.objectId)" class="pl-3 pr-2"
+            >Delete
+          </app-button>
+        </div>
+        <em class="date">{{ item.created | date: 'MMM d, y' }}</em>
+      </div>
+    </div>
+    <div *ngIf="isSuccessDeleted" class="text-center mt-5">
+      Success deleted!
+    </div>
+  </mat-tab>
+</mat-tab-group>

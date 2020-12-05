@@ -1,0 +1,14 @@
+@import '../../../../styles';
+
+.account {
+  min-height: 80vh;
+}
+
+::ng-deep .panel-buttons {
+  margin-top: to-rem(-14px);
+}
+
+::ng-deep .date {
+  position: relative;
+  top: to-rem(-28px);
+}

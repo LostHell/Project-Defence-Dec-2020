@@ -1,13 +1,37 @@
-<div>
-  <form action="">
-    <label for="fullName">Full name</label>
-    <input type="text" id="fullName" placeholder="Max Dreads">
-    <label for="email">Email</label>
-    <input type="text" id="email" placeholder="example@example.com">
-    <label for="password">Password</label>
-    <input type="password" id="password" placeholder="Password">
-    <label for="repeatPassword">Repeat Password</label>
-    <input type="password" id="repeatPassword" placeholder="Repeat password">
-    <input type="submit" value="Register">
+<div *ngIf="!isLoggedIn" class="container d-flex justify-content-center">
+  <form
+    [formGroup]="form"
+    (ngSubmit)="submitRegisterData()"
+    class="form d-flex flex-column"
+  >
+    <app-reactive-form-input
+      [form]="form"
+      name="name"
+      label="Full name"
+      type="text"
+      error="Please enter your full name!"
+    ></app-reactive-form-input>
+    <app-reactive-form-input
+      [form]="form"
+      name="email"
+      label="Email"
+      type="email"
+      error="Please enter your email!"
+    ></app-reactive-form-input>
+    <app-reactive-form-input
+      [form]="form"
+      name="password"
+      label="Password"
+      type="password"
+      error="Please enter your password!"
+    ></app-reactive-form-input>
+    <app-reactive-form-input
+      [form]="form"
+      name="repeatPassword"
+      label="Repeat Password"
+      type="password"
+      error="Repeat password mismatch!"
+    ></app-reactive-form-input>
+    <app-button>Register!</app-button>
   </form>
 </div>

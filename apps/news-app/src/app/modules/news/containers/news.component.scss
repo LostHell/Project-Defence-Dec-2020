@@ -1,5 +1,10 @@
 @import '../../../../styles';
 
+.news-page {
+  padding-bottom: to-rem(70px);
+  min-height: 80vh;
+}
+
 span {
   color: color('red');
 }

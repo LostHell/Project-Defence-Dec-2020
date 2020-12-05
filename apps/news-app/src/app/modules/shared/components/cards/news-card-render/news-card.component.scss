@@ -1,0 +1,37 @@
+@import '../../../../../../styles';
+
+.card {
+  color: color('dark-gray');
+  background-color: color('white');
+
+  .card-title {
+    font-size: to-rem(16px);
+  }
+}
+
+img.card-img-top {
+  height: to-rem(227px);
+  object-fit: cover;
+
+  @include media-breakpoint-up(md) {
+    height: unset;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .card {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .card-img-top {
+    object-fit: cover;
+    max-width: to-rem(227px);
+    max-height: to-rem(227px);
+  }
+
+  .card-body {
+    max-width: 75%;
+  }
+}

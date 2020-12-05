@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -6,18 +6,24 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './reactive-input.component.html',
   styleUrls: ['./reactive-input.component.scss'],
 })
-export class ReactiveInputComponent implements OnInit {
+export class ReactiveInputComponent implements AfterViewInit {
+  // @ViewChild('input') input: ElementRef;
+
   @Input() form: FormGroup;
-  @Input() formControlName: string;
+  @Input() name: string;
   @Input() label: string;
   @Input() type: 'text' | 'email' | 'password' | 'number' = 'text';
   @Input() error: string;
 
   constructor() {}
 
-  ngOnInit(): void {
-    // this.form = new FormGroup({
-    //   [this.formControlName]: new FormControl('', [Validators.required]),
-    // });
+  ngAfterViewInit(): void {
+    // Obtain the control over the input.
+    const control = this.form.get(this.name);
+
+    // Then check validity and mark as touched.
+    if (!!control && control.invalid && control.dirty) {
+      control.markAsTouched();
+    }
   }
 }

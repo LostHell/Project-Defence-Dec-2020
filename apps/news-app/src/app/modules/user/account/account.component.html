@@ -1,0 +1,9 @@
+<div *ngIf="isLoggedIn" class="container account">
+  <div *ngIf="isAdmin" class="my-5">
+    <app-admin-account></app-admin-account>
+  </div>
+  <div *ngIf="!isAdmin" class="my-5">
+    <app-user-account></app-user-account>
+  </div>
+</div>
+<app-not-authorized *ngIf="!isLoggedIn"></app-not-authorized>

@@ -1,0 +1,15 @@
+@import '../../../../../styles';
+
+.container {
+  padding-bottom: to-rem(70px);
+  min-height: 80vh;
+}
+
+.card-body {
+  color: color('dark-gray');
+  background-color: color('white');
+}
+
+.card-title {
+  font-size: to-rem(16px);
+}

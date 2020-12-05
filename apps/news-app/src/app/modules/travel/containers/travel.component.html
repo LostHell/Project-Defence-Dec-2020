@@ -1,6 +1,14 @@
-<div class="container">
+<div *ngIf="isLoggedIn" class="container travel">
   <h2 class="text-center text-uppercase py-5">
     Top destinations with historical value in Europe
   </h2>
-  <app-card [data]="destinationsData" [buttonHide]="'hide'"></app-card>
+  <div *ngFor="let item of destinations">
+    <app-news-card-reader
+      *ngIf="item.category === 'travel'"
+      class="d-block my-5"
+      [item]="item"
+      [buttonHide]="false"
+    ></app-news-card-reader>
+  </div>
 </div>
+<app-not-authorized *ngIf="!isLoggedIn"></app-not-authorized>

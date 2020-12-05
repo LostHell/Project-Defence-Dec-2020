@@ -1,0 +1,10 @@
+<div class="card">
+  <img class="card-img-top" [src]="item.imageUrl" alt="Card image cap" />
+  <div class="card-body">
+    <h3 class="card-title font-weight-bold" [innerHTML]="item.title"></h3>
+    <p class="card-text" [innerHTML]="item.content"></p>
+    <app-button *ngIf="buttonHide" [routerLink]="'/details/' + item.objectId">
+      Read more
+    </app-button>
+  </div>
+</div>

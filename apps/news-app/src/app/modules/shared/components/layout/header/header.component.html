@@ -2,12 +2,14 @@
   <div
     class="container d-flex justify-content-between align-items-center py-3 position-relative"
   >
-    <div class="text-center">
+    <div class="header-logo text-center">
       <a
         routerLink="/"
-        class="logo text-decoration-none"
+        class="logo text-decoration-none text-uppercase"
         (click)="onCloseSidenav()"
-        >NewsApp</a
+        ><span class="censored">Un</span
+        ><span class="censored-red">censored</span
+        ><span class="censored"> News</span></a
       >
     </div>
     <button
@@ -26,6 +28,14 @@
             class="p-2 d-block text-decoration-none"
             [routerLink]="item.route"
             >{{ item.name }}</a
+          >
+        </li>
+        <li *ngIf="isLoggedIn">
+          <a
+            class="p-2 d-block text-decoration-none"
+            routerLink="/"
+            (click)="logout()"
+            >Logout</a
           >
         </li>
       </ul>

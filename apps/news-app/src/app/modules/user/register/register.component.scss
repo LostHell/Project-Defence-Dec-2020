@@ -1,53 +1,18 @@
-div {
-  display: flex;
-  justify-content: center;
-  padding: 10rem 8rem;
+@import '../../../../styles';
 
-  form {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid white;
-    padding: 1rem 1.5rem;
-
-    label {
-      padding: 0.75rem 0 0.5rem 0;
-    }
-
-    input:not(:last-child) {
-      width: 22rem;
-      padding: 0.5rem;
-      border-radius: 5px;
-      border: none;
-      outline: none;
-    }
-
-    input:last-child {
-      margin: 1.25rem auto;
-      padding: 0.75rem;
-      width: 10rem;
-      color: white;
-      font-size: 16px;
-      background-color: red;
-      border: none;
-      outline: none;
-      border-radius: 5px;
-    }
-
-    input:last-child:hover {
-      background-color: white;
-      transition: background-color 0.2s, color 0.2s;
-      cursor: pointer;
-      color: #0f0f0f;
-    }
-  }
+.container {
+  padding: to-rem(140px) 0;
 }
 
-@media (max-width: 480px) {
-  div {
-    form {
-      input:not(:last-child) {
-        width: 14rem;
-      }
-    }
+.form {
+  border: 2px solid color('dark-gray');
+  background: color('form');
+  padding-top: to-rem(30px);
+  width: to-rem(260px);
+  height: to-rem(420px);
+
+  app-reactive-form-input,
+  app-button {
+    margin: 0 auto;
   }
 }
