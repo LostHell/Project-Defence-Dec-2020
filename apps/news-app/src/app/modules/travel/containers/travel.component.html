@@ -2,13 +2,19 @@
   <h2 class="text-center text-uppercase py-5">
     Top destinations with historical value in Europe
   </h2>
-  <div *ngFor="let item of destinations">
+  <div *ngFor="let item of pageSlice">
     <app-news-card-reader
-      *ngIf="item.category === 'travel'"
       class="d-block my-5"
       [item]="item"
       [buttonHide]="false"
     ></app-news-card-reader>
   </div>
+  <app-paginator
+    [areaLength]="destinations.length"
+    [area]="destinations"
+    [pageSize]="10"
+    [pageSizeOptions]="[10, 25, 50]"
+    (pageSlice)="onPageChange($event)"
+  ></app-paginator>
 </div>
 <app-not-authorized *ngIf="!isLoggedIn"></app-not-authorized>

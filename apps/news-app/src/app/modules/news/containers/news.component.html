@@ -1,7 +1,6 @@
 <div *ngIf="isLoggedIn" class="container news-page">
   <ng-container *ngFor="let item of pageSlice">
     <app-news-card-reader
-      *ngIf="item.category === 'news'"
       class="d-block my-5"
       [item]="item"
       buttonHide="true"

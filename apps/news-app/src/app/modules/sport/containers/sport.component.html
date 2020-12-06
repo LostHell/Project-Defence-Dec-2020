@@ -4,7 +4,6 @@
   ></app-football-result-table>
   <div *ngFor="let item of pageSlice">
     <app-news-card-reader
-      *ngIf="item.category === 'sport'"
       class="d-block my-5"
       [item]="item"
       [buttonHide]="true"

@@ -11,6 +11,7 @@ import { News } from '../../shared/models/News';
 })
 export class TravelComponent extends AutoUnsubscribe implements OnInit {
   destinations: News[] = [];
+  pageSlice = [];
 
   isLoggedIn: boolean = this.state.getState();
 
@@ -34,8 +35,18 @@ export class TravelComponent extends AutoUnsubscribe implements OnInit {
           }
         });
 
-        this.destinations = data;
+        for (const item of data) {
+          if (item.category === 'travel') {
+            this.destinations.push(item);
+          }
+        }
+
+        this.pageSlice = this.destinations.slice(0, 10);
       })
     );
+  }
+
+  onPageChange(event) {
+    this.pageSlice = event;
   }
 }
