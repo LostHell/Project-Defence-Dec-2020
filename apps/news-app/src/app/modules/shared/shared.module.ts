@@ -17,6 +17,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { DropdownMenuComponent } from './components/dropdown-menu/dropdown-menu.component';
 import { BaseInputComponent } from './components/forms/base-input/base-input.component';
 import { BaseInputTextareaComponent } from './components/forms/base-input-textarea/base-input-textarea.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule, MaterialModule, ReactiveFormsModule],
@@ -33,6 +34,7 @@ import { BaseInputTextareaComponent } from './components/forms/base-input-textar
     DropdownMenuComponent,
     BaseInputComponent,
     BaseInputTextareaComponent,
+    PaginatorComponent,
   ],
   exports: [
     HeaderComponent,
@@ -46,6 +48,7 @@ import { BaseInputTextareaComponent } from './components/forms/base-input-textar
     DropdownMenuComponent,
     BaseInputComponent,
     BaseInputTextareaComponent,
+    PaginatorComponent,
   ],
 })
 export class SharedModule {}

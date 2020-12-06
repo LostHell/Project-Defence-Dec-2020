@@ -1,6 +1,8 @@
 <div *ngIf="isLoggedIn" class="container football-page">
-  <app-football-result-table [data]="footballResults"></app-football-result-table>
-  <div *ngFor="let item of news">
+  <app-football-result-table
+    [data]="footballResults"
+  ></app-football-result-table>
+  <div *ngFor="let item of pageSlice">
     <app-news-card-reader
       *ngIf="item.category === 'sport'"
       class="d-block my-5"
@@ -8,5 +10,12 @@
       [buttonHide]="true"
     ></app-news-card-reader>
   </div>
+  <app-paginator
+    [areaLength]="news.length"
+    [area]="news"
+    [pageSize]="10"
+    [pageSizeOptions]="[10, 25, 50]"
+    (pageSlice)="onPageChange($event)"
+  ></app-paginator>
 </div>
 <app-not-authorized *ngIf="!isLoggedIn"></app-not-authorized>

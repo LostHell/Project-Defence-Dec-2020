@@ -11,9 +11,9 @@ import { FootballResult } from '../../shared/models/Football-Result';
   styleUrls: ['./sport.component.scss'],
 })
 export class SportComponent extends AutoUnsubscribe implements OnInit {
-  public footballResults: FootballResult[] = [];
-
-  public news: News[] = [];
+  footballResults: FootballResult[] = [];
+  news: News[] = [];
+  pageSlice = [];
 
   isLoggedIn: boolean = this.state.getState();
 
@@ -45,8 +45,12 @@ export class SportComponent extends AutoUnsubscribe implements OnInit {
             item.content = item.content.slice(0, 180).concat('...');
           }
 
-          this.news.push(item);
+          if (item.category === 'sport') {
+            this.news.push(item);
+          }
         }
+
+        this.pageSlice = this.news.slice(0, 10);
       })
     );
     this.autoUnsubscribe(
@@ -69,5 +73,9 @@ export class SportComponent extends AutoUnsubscribe implements OnInit {
         }
       })
     );
+  }
+
+  onPageChange(event) {
+    this.pageSlice = event;
   }
 }

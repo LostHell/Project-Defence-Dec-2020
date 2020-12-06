@@ -3,6 +3,7 @@ import { LocalStorageServiceService } from '../../../core/services/auth/check-us
 import { NewsService } from '../../../core/services/news/news.service';
 import { News } from '../../shared/models/News';
 import { AutoUnsubscribe } from '../../../core/classes/AutoUnsubscribe';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-news',
@@ -11,6 +12,7 @@ import { AutoUnsubscribe } from '../../../core/classes/AutoUnsubscribe';
 })
 export class NewsComponent extends AutoUnsubscribe implements OnInit {
   public news: News[] = [];
+  pageSlice = [];
 
   isLoggedIn: boolean = this.state.getState();
 
@@ -42,9 +44,17 @@ export class NewsComponent extends AutoUnsubscribe implements OnInit {
             item.content = item.content.slice(0, 180).concat('...');
           }
 
-          this.news.push(item);
+          if (item.category === 'news') {
+            this.news.push(item);
+          }
         }
+
+        this.pageSlice = this.news.slice(0, 10);
       })
     );
+  }
+
+  onPageChange(event) {
+    this.pageSlice = event;
   }
 }
