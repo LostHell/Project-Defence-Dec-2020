@@ -19,6 +19,7 @@ export class AdminAccountComponent extends AutoUnsubscribe implements OnInit {
   isSuccessDeleted = false;
 
   news: News[] = [];
+  pageSlice = [];
 
   constructor(private newsService: NewsService, private dialog: MatDialog) {
     super();
@@ -53,6 +54,7 @@ export class AdminAccountComponent extends AutoUnsubscribe implements OnInit {
         }
 
         this.news = data;
+        this.pageSlice = this.news.slice(0, 10);
       })
     );
   }
@@ -178,5 +180,9 @@ export class AdminAccountComponent extends AutoUnsubscribe implements OnInit {
     setTimeout(() => {
       this.isSuccessDeleted = false;
     }, 3500);
+  }
+
+  onPageChange(event) {
+    this.pageSlice = event;
   }
 }

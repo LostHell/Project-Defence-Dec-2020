@@ -64,7 +64,7 @@
   <mat-tab>
     <ng-template mat-tab-label>Show News</ng-template>
     <div *ngIf="!isSuccessDeleted" class="mt-5">
-      <div *ngFor="let item of news" class="my-3">
+      <div *ngFor="let item of pageSlice" class="my-3">
         <app-news-card-reader [item]="item"></app-news-card-reader>
         <div class="panel-buttons d-flex justify-content-end">
           <app-button (click)="getDialogItem(item.objectId)">Update</app-button>
@@ -74,6 +74,13 @@
         </div>
         <em class="date">{{ item.created | date: 'MMM d, y' }}</em>
       </div>
+      <app-paginator
+        [areaLength]="news.length"
+        [area]="news"
+        [pageSize]="10"
+        [pageSizeOptions]="[10, 25, 50, 100]"
+        (pageSlice)="onPageChange($event)"
+      ></app-paginator>
     </div>
     <div *ngIf="isSuccessDeleted" class="text-center mt-5">
       Success deleted!
