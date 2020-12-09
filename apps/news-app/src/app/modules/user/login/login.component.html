@@ -19,5 +19,8 @@
       error="Please enter your password!"
     ></app-reactive-form-input>
     <app-button>Login</app-button>
+    <div *ngIf="statusError" class="error-message text-center py-2">
+      Invalid email or password!
+    </div>
   </form>
 </div>

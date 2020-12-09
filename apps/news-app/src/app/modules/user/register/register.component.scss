@@ -15,4 +15,9 @@
   app-button {
     margin: 0 auto;
   }
+
+  .error-message {
+    color: color('red');
+    font-weight: bold;
+  }
 }

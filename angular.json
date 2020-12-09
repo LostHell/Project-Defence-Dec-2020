@@ -22,7 +22,7 @@
             "tsConfig": "apps/news-app/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "apps/news-app/src/favicon.ico",
+              "apps/news-app/src/uncensored-news-favicon.ico",
               "apps/news-app/src/assets"
             ],
             "styles": [

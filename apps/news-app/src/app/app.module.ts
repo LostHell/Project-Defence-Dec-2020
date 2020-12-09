@@ -17,6 +17,8 @@ import { FootballResultTableComponent } from './modules/sport/components/footbal
 import { WorkTimeComponent } from './modules/contact/components/work-time/work-time.component';
 import { ContactInfoComponent } from './modules/contact/components/contact-info/contact-info.component';
 
+import { TokenInterceptorProvider } from './core/interceptors/token.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,7 @@ import { ContactInfoComponent } from './modules/contact/components/contact-info/
     MaterialModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [TokenInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

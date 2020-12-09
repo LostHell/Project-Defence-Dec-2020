@@ -14,6 +14,8 @@ export class RegisterComponent extends AutoUnsubscribe {
   form: FormGroup;
   isLoggedIn: boolean = this.state.getState();
 
+  statusError: string;
+
   constructor(
     private userService: UserService,
     private state: LocalStorageServiceService,
@@ -51,11 +53,21 @@ export class RegisterComponent extends AutoUnsubscribe {
       this.form.valid &&
       this.form.value.password === this.form.value.repeatPassword
     ) {
+      this.statusError = undefined;
+
       this.autoUnsubscribe(
-        this.userService.userRegister(this.form.value).subscribe((res) => res)
+        this.userService.userRegister(this.form.value).subscribe(
+          (res) => res,
+          (error) => {
+            this.statusError = `${error.status} ${error.statusText}`;
+          }
+        )
       );
+
       setTimeout(() => {
-        this.router.navigateByUrl('user/login');
+        if (!this.statusError) {
+          this.router.navigateByUrl('user/login');
+        }
       }, 1200);
     }
   }

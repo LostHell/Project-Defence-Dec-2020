@@ -9,10 +9,15 @@
   background: color('form');
   padding-top: to-rem(30px);
   width: to-rem(260px);
-  height: to-rem(260px);
+  height: to-rem(270px);
 
   app-reactive-form-input,
   app-button {
     margin: 0 auto;
+  }
+
+  .error-message {
+    color: color('red');
+    font-weight: bold;
   }
 }

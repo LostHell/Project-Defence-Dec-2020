@@ -13,6 +13,8 @@ import { AutoUnsubscribe } from '../../../core/classes/AutoUnsubscribe';
 export class LoginComponent extends AutoUnsubscribe {
   form: FormGroup;
 
+  statusError: string;
+
   isLoggedIn: boolean = this.state.getState();
 
   constructor(
@@ -41,13 +43,18 @@ export class LoginComponent extends AutoUnsubscribe {
   submitLoginData() {
     if (this.form.valid) {
       this.autoUnsubscribe(
-        this.userService.userLogin(this.form.value).subscribe((res) => {
-          if (res['user-token']) {
-            this.state.setState('user-token', res['user-token']);
-            localStorage.setItem('id', res['objectId']);
-            this.router.navigateByUrl('/');
+        this.userService.userLogin(this.form.value).subscribe(
+          (res) => {
+            if (res['user-token']) {
+              this.state.setState('user-token', res['user-token']);
+              localStorage.setItem('id', res['objectId']);
+              this.router.navigateByUrl('/');
+            }
+          },
+          (error) => {
+            this.statusError = `${error.status} ${error.statusText}`;
           }
-        })
+        )
       );
     }
   }

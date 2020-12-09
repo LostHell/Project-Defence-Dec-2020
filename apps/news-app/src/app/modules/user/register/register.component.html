@@ -33,5 +33,8 @@
       error="Repeat password mismatch!"
     ></app-reactive-form-input>
     <app-button>Register!</app-button>
+    <div *ngIf="statusError" class="error-message text-center py-2">
+      Email is already exists!
+    </div>
   </form>
 </div>
