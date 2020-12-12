@@ -26,8 +26,8 @@ export class AccessGuard implements CanActivate {
     | UrlTree {
     if (
       this.token &&
-      !state.url.includes('login') &&
-      !state.url.includes('register')
+      !state.url.includes('/user/login') &&
+      !state.url.includes('/user/register')
     ) {
       return true;
     } else if (
