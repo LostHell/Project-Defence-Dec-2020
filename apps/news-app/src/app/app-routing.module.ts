@@ -7,6 +7,7 @@ import { MusicComponent } from './modules/music/containers/music.component';
 // import { ContactComponent } from './modules/contact/containers/contact.component';
 import { ErrorComponent } from './modules/error/error.component';
 import { DetailsComponent } from './modules/shared/components/details/details.component';
+import { AccessGuard } from './core/guards/access.guard';
 
 const routes: Routes = [
   {
@@ -15,17 +16,21 @@ const routes: Routes = [
       import('./modules/home/home.module').then((m) => m.HomeModule),
     pathMatch: 'full',
   },
-  { path: 'news', component: NewsComponent },
-  { path: 'sports', component: SportComponent },
-  { path: 'travel', component: TravelComponent },
-  { path: 'music', component: MusicComponent },
+  { path: 'news', component: NewsComponent, canActivate: [AccessGuard] },
+  { path: 'sports', component: SportComponent, canActivate: [AccessGuard] },
+  { path: 'travel', component: TravelComponent, canActivate: [AccessGuard] },
+  { path: 'music', component: MusicComponent, canActivate: [AccessGuard] },
   // { path: 'contacts', component: ContactComponent },
   {
     path: 'user',
     loadChildren: () =>
       import('./modules/user/user.module').then((m) => m.UserModule),
   },
-  { path: 'details/:id', component: DetailsComponent },
+  {
+    path: 'details/:id',
+    component: DetailsComponent,
+    canActivate: [AccessGuard],
+  },
   { path: '**', component: ErrorComponent },
 ];
 

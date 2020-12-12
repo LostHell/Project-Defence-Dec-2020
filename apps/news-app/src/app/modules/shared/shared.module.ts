@@ -8,12 +8,13 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { SidenavComponent } from './components/layout/sidenav/sidenav.component';
 
-import { ReactiveInputComponent } from './components/forms/reactive-input/reactive-input.component';
 import { NewsCardComponent } from './components/cards/news-card-render/news-card.component';
 import { MusicCardComponent } from '../music/components/music-card-render/music-card.component';
 import { ButtonComponent } from './components/button/button/button.component';
 import { NotAuthorizedComponent } from './components/not-authorized/not-authorized.component';
 import { DetailsComponent } from './components/details/details.component';
+
+import { ReactiveInputComponent } from './components/forms/reactive-input/reactive-input.component';
 import { DropdownMenuComponent } from './components/dropdown-menu/dropdown-menu.component';
 import { BaseInputComponent } from './components/forms/base-input/base-input.component';
 import { BaseInputTextareaComponent } from './components/forms/base-input-textarea/base-input-textarea.component';

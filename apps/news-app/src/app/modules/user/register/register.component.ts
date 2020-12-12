@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../../core/services/auth/user/user.service';
-import { LocalStorageServiceService } from '../../../core/services/auth/check-user-state/LocalStorageService.service';
+import { LocalStorageService } from '../../../core/services/auth/user-local-storage/localStorageService.service';
 import { AutoUnsubscribe } from '../../../core/classes/AutoUnsubscribe';
 
 @Component({
@@ -18,7 +18,7 @@ export class RegisterComponent extends AutoUnsubscribe {
 
   constructor(
     private userService: UserService,
-    private state: LocalStorageServiceService,
+    private state: LocalStorageService,
     private router: Router
   ) {
     super();

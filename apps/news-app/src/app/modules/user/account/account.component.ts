@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AutoUnsubscribe } from '../../../core/classes/AutoUnsubscribe';
-import { LocalStorageServiceService } from '../../../core/services/auth/check-user-state/LocalStorageService.service';
+import { LocalStorageService } from '../../../core/services/auth/user-local-storage/localStorageService.service';
 import { UserService } from '../../../core/services/auth/user/user.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class AccountComponent extends AutoUnsubscribe implements OnInit {
   id: string = localStorage.getItem('id');
 
   constructor(
-    private state: LocalStorageServiceService,
+    private state: LocalStorageService,
     private userService: UserService
   ) {
     super();

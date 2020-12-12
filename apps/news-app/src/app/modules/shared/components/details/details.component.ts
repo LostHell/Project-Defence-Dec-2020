@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AutoUnsubscribe } from '../../../../core/classes/AutoUnsubscribe';
 import { ActivatedRoute } from '@angular/router';
 import { NewsService } from '../../../../core/services/news/news.service';
-import { LocalStorageServiceService } from '../../../../core/services/auth/check-user-state/LocalStorageService.service';
+import { LocalStorageService } from '../../../../core/services/auth/user-local-storage/localStorageService.service';
 
 @Component({
   selector: 'app-details',
@@ -22,7 +22,7 @@ export class DetailsComponent extends AutoUnsubscribe implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private state: LocalStorageServiceService,
+    private state: LocalStorageService,
     private newsService: NewsService
   ) {
     super();
